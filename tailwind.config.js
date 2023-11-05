@@ -2,10 +2,17 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx,vue}",
   ],
   theme: {
-    extend: {},
+    extend: {
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      neutral: '#FBFBFB',
+      accent: '#FEE85C',
+    },
+    },
   },
   plugins: [],
 }

@@ -14,14 +14,15 @@
     "jsx": "preserve",
     "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"]
-    },
+      "@/*": ["src/*"],
+      },
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "checkJS": true
+    "checkJS": true,
+
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "references": [{ "path": "./tsconfig.node.json" }]
