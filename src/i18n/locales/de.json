@@ -1,0 +1,13 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "about": "Über uns"
+  },
+  "home": {
+    "header": "Willkommen zum Vue 3 I18n-Tutorial!",
+    "created_by": "Dieses Tutorial wird Ihnen von Lokalise präsentiert."
+  },
+  "about": {
+    "header": "Über uns"
+  }
+}
