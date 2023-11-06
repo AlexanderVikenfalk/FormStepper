@@ -9,5 +9,8 @@
   },
   "about": {
     "header": "Om oss"
+  },
+  "wizard": {
+    "first_name": "Förnamn"
   }
 }

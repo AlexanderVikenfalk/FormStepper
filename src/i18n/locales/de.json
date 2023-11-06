@@ -9,5 +9,8 @@
   },
   "about": {
     "header": "Über uns"
+  },
+  "wizard": {
+    "first_name": "Vorname"
   }
 }
