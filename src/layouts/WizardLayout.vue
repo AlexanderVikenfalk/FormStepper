@@ -1,6 +1,10 @@
 <template>
   <div class="flex flex-1 justify-center items-center">
-    <slot />
+    <div class="bg-white w-4/5 shadow-md">
+      <main class="p-8">
+        <slot />
+      </main>
+    </div>
   </div>
 </template>
 
