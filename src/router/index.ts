@@ -1,11 +1,17 @@
 import {RouteRecordRaw, createRouter, createWebHistory } from 'vue-router'
-import {DefaultLayout} from '@/layouts'
+import DefaultLayout from '@/layouts/DefaultLayout.vue'
 
 const routes: Array<RouteRecordRaw> = [
     {
         name: 'Home',
         path: '/home',
-        component: () => import('../views/Home.vue'),
+        component: () => import('../views/Stepper.vue'),
+        meta: {layout: DefaultLayout}
+    },
+    {
+        name: 'Stepper',
+        path: '/stepper',
+        component: () => import('../views/Stepper.vue'),
         meta: {layout: DefaultLayout}
     },
     {
