@@ -1,14 +1,10 @@
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-
-});
+<script setup lang="ts">
+import TheHeader from "@/components/TheHeader.vue";
 </script>
 
-
 <template>
-  <div class="min-h-screen w-full bg-neutral flex justify-center items-center">
+  <div class="bg-neutral min-h-screen flex flex-col">
+    <TheHeader />
     <component :is="$route.meta.layout || 'div'">
       <router-view v-slot="{ Component }">
         <transition name="fade" mode="out-in">
@@ -18,4 +14,3 @@ export default defineComponent({
     </component>
   </div>
 </template>
-
