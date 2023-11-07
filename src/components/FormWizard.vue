@@ -1,80 +1,49 @@
 <script setup lang="ts">
-import { useForm } from 'vee-validate';
-import { ref, computed, provide } from 'vue';
+import { ref, computed } from "vue";
+import { useForm } from "vee-validate";
+import * as yup from "yup";
+import { steps } from "./stepper/steps"; // Assuming 'steps' is exported from a separate file
 
-const props = defineProps({
-  validationSchema: {
-    type: Array,
-    required: true,
-  },
+const currentStepIndex = ref(0); // Reactive ref to track the current step
+
+const currentStep = computed(() => steps[currentStepIndex.value]);
+const currentValidationSchema = computed(
+  () => currentStep.value.validationSchema,
+);
+
+// Set up form context with vee-validate using the current validation schema
+const { handleSubmit, ...formContext } = useForm({
+  validationSchema: currentValidationSchema,
 });
 
-const emit = defineEmits(['submit']);
-const currentStepIdx = ref(0);
-
-// Injects the starting step, child <form-steps> will use this to generate their ids
-const stepCounter = ref(0);
-provide('STEP_COUNTER', stepCounter);
-
-// Inject the live ref of the current index to child components
-// will be used to toggle each form-step visibility
-provide('CURRENT_STEP_INDEX', currentStepIdx);
-
-// if this is the last step
-const isLastStep = computed(() => {
-  return currentStepIdx.value === stepCounter.value - 1;
-});
-
-// If the `previous` button should appear
-const hasPrevious = computed(() => {
-  return currentStepIdx.value > 0;
-});
-
-// extracts the indivdual step schema
-const currentSchema = computed(() => {
-  return props.validationSchema[currentStepIdx.value];
-});
-
-const { values, handleSubmit } = useForm({
-  // vee-validate will be aware of computed schema changes
-  validationSchema: currentSchema,
-  // turn this on so each step values won't get removed when you move back or to the next step
-  keepValuesOnUnmount: true,
-});
-
-// We are using the "submit" handler to progress to next steps
-// and to submit the form if its the last step
+// Define submit logic
 const onSubmit = handleSubmit((values) => {
-  if (!isLastStep.value) {
-    currentStepIdx.value++;
-
-    return;
+  if (currentStepIndex.value < steps.length - 1) {
+    currentStepIndex.value++;
+  } else {
+    // Handle final submit
   }
-
-  // Let the parent know the form was filled across all steps
-  emit('submit', values);
 });
 
-function goToPrev() {
-  if (currentStepIdx.value === 0) {
-    return;
+// Define previous step logic
+const onPrevious = () => {
+  if (currentStepIndex.value > 0) {
+    currentStepIndex.value--;
   }
-
-  currentStepIdx.value--;
-}
+};
 </script>
 
-
 <template>
-  <form @submit="onSubmit">
-    <slot />
-    <div>
-      <button class="button-secondary" v-if="hasPrevious" type="button" @click="goToPrev">
-        Previous
-      </button>
-      <button class="button-primary" type="submit">{{ isLastStep ? 'Submit' : 'Next' }}</button>
-    </div>
+  <div>
+    <form @submit.prevent="onSubmit">
+      <!-- Dynamically render the current step component -->
+      <component :is="currentStep.component" :key="currentStepIndex" />
 
-    <pre>{{ values }}</pre>
-  </form>
+      <!-- Buttons to navigate steps -->
+      <button @click="onPrevious" v-if="currentStepIndex > 0">Previous</button>
+      <button type="submit">
+        {{ currentStepIndex < steps.length - 1 ? "Next" : "Submit" }}
+      </button>
+    </form>
+  </div>
 </template>
