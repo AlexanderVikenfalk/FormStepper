@@ -34,16 +34,25 @@ const onPrevious = () => {
 </script>
 
 <template>
-  <div>
-    <form @submit.prevent="onSubmit">
-      <!-- Dynamically render the current step component -->
-      <component :is="currentStep.component" :key="currentStepIndex" />
+  <!-- Use flex and full screen height here -->
+  <form @submit.prevent="onSubmit">
+    <!-- Dynamically render the current step component -->
+    <component :is="currentStep.component" :key="currentStepIndex" />
 
-      <!-- Buttons to navigate steps -->
-      <button @click="onPrevious" v-if="currentStepIndex > 0">Previous</button>
-      <button type="submit">
+    <!-- Buttons to navigate steps -->
+    <div class="flex justify-between items-center mt-auto">
+      <button
+        class="button-secondary"
+        @click="onPrevious"
+        v-if="currentStepIndex > 0"
+      >
+        Previous
+      </button>
+
+      <div class="flex-grow"></div>
+      <button class="button-primary" type="submit">
         {{ currentStepIndex < steps.length - 1 ? "Next" : "Submit" }}
       </button>
-    </form>
-  </div>
+    </div>
+  </form>
 </template>
