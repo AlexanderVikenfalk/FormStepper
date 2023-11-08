@@ -1,6 +1,5 @@
 <!-- StepOneComponent.vue -->
 <script setup lang="ts">
-import { defineProps, defineEmits } from "vue";
 import { Field, ErrorMessage } from "vee-validate";
 
 // Define the props if any data is needed from the parent component
@@ -15,12 +14,12 @@ defineEmits(["update:modelValue"]); // if the step needs to emit events
 </script>
 
 <template>
-  <div class="flex">
-    <div class="flex items-center justify-center w-1/2">
-      <icon name="nameData"></icon>
+  <div class="wizard-step-wrapper">
+    <div class="wizard-icon-wrapper pr-4">
+      <icon name="step_personal_data"></icon>
     </div>
-    <article class="flex flex-col justify-center w-1/2">
-      <div class="p-2 mt-1">
+    <article class="wizard-content-wrapper">
+      <div class="wizard-input-wrapper">
         <label class="wizard-input-label" for="firstName">{{
           $t("wizard.first_name")
         }}</label>
@@ -31,12 +30,12 @@ defineEmits(["update:modelValue"]); // if the step needs to emit events
           type="text"
           placeholder="Axel"
         />
-        <div class="h-4 mt-2">
+        <div class="wizard-input-error-wrapper">
           <ErrorMessage class="wizard-input-error" name="firstName" />
         </div>
       </div>
 
-      <div class="p-2 mt-1">
+      <div class="wizard-input-wrapper">
         <label class="wizard-input-label" for="lastName"> Last name</label>
         <Field
           class="wizard-input"
@@ -44,12 +43,12 @@ defineEmits(["update:modelValue"]); // if the step needs to emit events
           type="text"
           placeholder="Springer"
         />
-        <div class="h-4">
+        <div class="wizard-input-error-wrapper">
           <ErrorMessage class="wizard-input-error" name="lastName" />
         </div>
       </div>
 
-      <div class="p-2 mt-1">
+      <div class="wizard-input-wrapper">
         <label class="wizard-input-label" for="firstName">
           Github user name</label
         >
@@ -59,7 +58,7 @@ defineEmits(["update:modelValue"]); // if the step needs to emit events
           type="text"
           placeholder="Caesar"
         />
-        <div class="h-4">
+        <div class="wizard-input-error-wrapper">
           <ErrorMessage class="wizard-input-error" name="userName" />
         </div>
       </div>

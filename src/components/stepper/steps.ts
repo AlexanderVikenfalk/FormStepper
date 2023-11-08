@@ -1,19 +1,19 @@
 // steps.ts
 import * as yup from "yup";
-import StepOneComponent from "./StepOneComponent.vue";
-import StepTwoComponent from "./StepTwoComponent.vue";
-import StepThreeComponent from "./StepThreeComponent.vue";
-import StepFourComponent from "./StepFourComponent.vue";
+import StepWelcome from "@/components/stepper/StepWelcome.vue";
+import StepPersonalData from "./StepPersonalData.vue";
+import StepUserAgreement from "@/components/stepper/StepUserAgreement.vue";
+import StepResult from "@/components/stepper/StepResult.vue";
 
 const noValidationSchema = yup.object({});
 
 export const steps = [
   {
-    component: StepOneComponent,
+    component: StepWelcome,
     validationSchema: noValidationSchema,
   },
   {
-    component: StepTwoComponent,
+    component: StepPersonalData,
     validationSchema: yup.object({
       firstName: yup.string().required().label("First Name"),
       lastName: yup.string().required().label("Last Name"),
@@ -21,19 +21,19 @@ export const steps = [
     }),
   },
   {
-    component: StepThreeComponent,
+    component: StepUserAgreement,
     validationSchema: yup.object({
       email: yup.string().required().email().label("Email"),
       terms: yup
         .boolean()
         .default(false)
-        .required()
-        .equals([true])
+        .required("You must accept the terms and conditions")
+        .equals([true], "You must accept the terms and conditions")
         .label("Accept Terms and Conditions"),
     }),
   },
   {
-    component: StepFourComponent,
+    component: StepResult,
     validationSchema: noValidationSchema,
   },
 ];

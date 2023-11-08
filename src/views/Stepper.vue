@@ -16,11 +16,11 @@ const formData = ref({}); // Initialize form data object
     :current-step="currentStepIndex"
     :on-next="nextStep"
     :on-previous="previousStep"
+    class="min-height-full height-full"
     @submit="submitStepper"
   >
     <template v-for="(step, index) in steps">
       <FormStep :key="index" v-if="currentStepIndex === index">
-        <!-- Use dynamic component :is to load current step content -->
         <component :is="step.component" :form-data="formData" />
       </FormStep>
     </template>
