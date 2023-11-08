@@ -1,11 +1,10 @@
-// steps.ts
-import * as yup from "yup";
+import { object, string, boolean } from "yup";
 import StepWelcome from "@/components/stepper/StepWelcome.vue";
 import StepPersonalData from "./StepPersonalData.vue";
 import StepUserAgreement from "@/components/stepper/StepUserAgreement.vue";
 import StepResult from "@/components/stepper/StepResult.vue";
 
-const noValidationSchema = yup.object({});
+const noValidationSchema = object({});
 
 export const steps = [
   {
@@ -14,21 +13,20 @@ export const steps = [
   },
   {
     component: StepPersonalData,
-    validationSchema: yup.object({
-      firstName: yup.string().required().label("First Name"),
-      lastName: yup.string().required().label("Last Name"),
-      userName: yup.string().required().label("Github User Name"),
+    validationSchema: object({
+      firstName: string().required().label("First Name"),
+      lastName: string().required().label("Last Name"),
+      userName: string().required().label("Github User Name"),
     }),
   },
   {
     component: StepUserAgreement,
-    validationSchema: yup.object({
-      email: yup.string().required().email().label("Email"),
-      terms: yup
-        .boolean()
+    validationSchema: object({
+      email: string().required().email().label("Email"),
+      terms: boolean()
         .default(false)
         .required("You must accept the terms and conditions")
-        .equals([true], "You must accept the terms and conditions")
+        .oneOf([true], "You must accept the terms and conditions") // Replaced 'equals' with 'oneOf'
         .label("Accept Terms and Conditions"),
     }),
   },
