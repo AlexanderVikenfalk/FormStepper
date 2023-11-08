@@ -1,6 +1,5 @@
-// useStepper.ts
-import { ref } from 'vue';
-import * as yup from 'yup';
+import { ref } from "vue";
+import * as yup from "yup";
 
 // Define a step type if needed
 interface Step {
