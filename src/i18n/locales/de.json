@@ -1,16 +1,43 @@
 {
-  "nav": {
-    "home": "Startseite",
-    "about": "Über uns"
+  "locale": {
+    "en": "Englisch",
+    "de": "Deutsch",
+    "se": "Schwedisch"
   },
-  "home": {
-    "header": "Willkommen zum Vue 3 I18n-Tutorial!",
-    "created_by": "Dieses Tutorial wird Ihnen von Lokalise präsentiert."
-  },
-  "about": {
-    "header": "Über uns"
+  "error": {
+    "page_not_found": {
+      "description": "Die von Ihnen gesuchte Seite wurde nicht gefunden. Bitte versuchen Sie es erneut.",
+      "header": "Seite nicht gefunden"
+    }
   },
   "wizard": {
-    "first_name": "Vorname"
+    "welcome_header": "Willkommen bei GitHub Profiler!",
+    "intro_text": "Lass uns anfangen. In nur wenigen Schritten kannst du die GitHub-Daten eines beliebigen Benutzers anzeigen.",
+    "step_one_header": "1. Erzählen Sie uns von sich selbst",
+    "step_one_info": "Teilen Sie einige grundlegende Informationen wie Ihren Namen mit.",
+    "step_two_header": "2. Geben Sie Ihre E-Mail-Adresse ein und stimmen Sie den Bedingungen zu",
+    "step_two_info": "Geben Sie Ihre E-Mail-Adresse ein und akzeptieren Sie die Nutzungsbedingungen, um fortzufahren.",
+    "step_three_header": "3. Ihr GitHub-Profil ansehen",
+    "step_three_info": "Werfen Sie einen Blick auf die GitHub-Statistiken und Profildetails.",
+    "email": "E-Mail",
+    "agree_to_terms": "Ich stimme den Nutzungsbedingungen zu.",
+    "labels": {
+      "first_name": "Vorname",
+      "last_name": "Nachname",
+      "github_username": "GitHub-Benutzername"
+    },
+    "placeholders": {
+      "email": "{account}{'@'}{domain}",
+      "first_name": "Axel",
+      "last_name": "Springer",
+      "github_username": "Caesar"
+    }
+  },
+  "validation": {
+    "default": "Dieser Wert scheint ungültig zu sein.",
+    "required": "{path} ist ein Pflichtfeld.",
+    "email": "Dies muss eine gültige E-Mail-Adresse sein.",
+    "equals": "Sie müssen die Nutzungsbedingungen akzeptieren.",
+    "test": "Validation test ERMAN"
   }
 }

@@ -1,0 +1,36 @@
+{
+  "locale": {
+    "en": "Engelska",
+    "de": "Tyska",
+    "sv": "Svenska"
+  },
+  "error": {
+    "page_not_found": {
+      "description": "Sidan du letade efter kunde inte hittas. Vänligen försök igen.",
+      "header": "Sidan kunde inte hittas"
+    }
+  },
+  "wizard": {
+    "welcome_header": "Välkommen till GitHub Profiler!",
+    "intro_text": "Låt oss börja. På bara några steg kommer du att kunna se GitHub-information för vilken användare som helst du vill undersöka.",
+    "step_one_header": "1. Berätta om dig själv",
+    "step_one_info": "Dela några grundläggande uppgifter, som ditt namn.",
+    "step_two_header": "2. Ange din e-post och godkänn villkoren",
+    "step_two_info": "Ange din e-postadress och acceptera användaravtalet för att fortsätta.",
+    "step_three_header": "3. Visa din GitHub-profil",
+    "step_three_info": "Ta en titt på GitHub-statistiken och profiluppgifterna.",
+    "email": "E-post",
+    "agree_to_terms": "Jag godkänner villkoren.",
+    "labels": {
+      "first_name": "Förnamn",
+      "last_name": "Efternamn",
+      "github_username": "GitHub-användarnamn"
+    },
+    "placeholders": {
+      "email": "{account}{'@'}{domain}",
+      "first_name": "Axel",
+      "last_name": "Springer",
+      "github_username": "Caesar"
+    }
+  }
+}

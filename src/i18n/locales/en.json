@@ -2,7 +2,7 @@
   "locale": {
     "en": "English",
     "de": "German",
-    "se": "Swedish"
+    "sv": "Swedish"
   },
   "error": {
     "page_not_found": {
@@ -10,18 +10,34 @@
       "header": "Page not found"
     }
   },
-  "nav": {
-    "home": "Home",
-    "about": "About"
-  },
-  "home": {
-    "header": "Welcome to the Vue 3 I18n tutorial!",
-    "created_by": "This tutorial was brought to you by Lokalise."
-  },
-  "about": {
-    "header": "About us"
-  },
   "wizard": {
-    "first_name": "First name"
+    "welcome_header": "Welcome to GitHub Profiler!",
+    "intro_text": "Let's get started. In just a few steps, you'll be viewing the GitHub details for any user you want to check out.",
+    "step_one_header": "1. Tell us about yourself",
+    "step_one_info": "Share some basic info, like your name.",
+    "step_two_header": "2. Fill in your email & agree to terms",
+    "step_two_info": "Enter your email address and accept the user agreement to proceed.",
+    "step_three_header": "3. View your GitHub profile",
+    "step_three_info": "Take a peek at the GitHub stats and profile details.",
+    "email": "Email",
+    "agree_to_terms": "I agree with the terms and conditions.",
+    "labels": {
+      "first_name": "First name test",
+      "last_name": "Last name",
+      "github_username": "Github user name"
+    },
+    "placeholders": {
+      "email": "{account}{'@'}{domain}",
+      "first_name": "Axel",
+      "last_name": "Springer",
+      "github_username": "Caesar"
     }
+  },
+  "validation": {
+    "default": "This value seems to be invalid.",
+    "required": "{path} is a required field.",
+    "email": "This must be a valid email.",
+    "equals": "You must accept the terms and conditions.",
+    "test": "Validation test"
   }
+}

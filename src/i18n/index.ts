@@ -4,15 +4,14 @@ import numberFormats from "./rules/numbers.js";
 import datetimeFormats from "./rules/datetime.js";
 import en from "./locales/en.json";
 import de from "./locales/de.json";
-import se from "./locales/se.json";
+import sv from "./locales/sv.json";
 
 const i18nOptions: I18nOptions = {
   locale: import.meta.env.VITE_DEFAULT_LOCALE as string,
   fallbackLocale: import.meta.env.VITE_FALLBACK_LOCALE as string,
   legacy: false,
   globalInjection: true,
-  messages: { en, de, se },
-  runtimeOnly: false,
+  messages: { en, de, sv },
   pluralRules,
   numberFormats,
   datetimeFormats,
