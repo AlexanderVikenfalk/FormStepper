@@ -4,9 +4,11 @@ export default {
   theme: {
     extend: {
       fontSize: {
-        headline: "clamp(1.5rem, 5vw + 1rem, 2.5rem)",
-        body: "clamp(1rem, 2.5vw, 1.2rem)",
+        headline: "clamp(1.75rem, 4vw + 1rem, 2.25rem)",
+        body: "clamp(0.875rem, 2vw + 0.5rem, 1rem)",
+        smallHeadline: "clamp(1rem, 2.5vw + 0.5rem, 1.25rem)",
       },
+
       colors: {
         transparent: "transparent",
         current: "currentColor",
@@ -65,6 +67,9 @@ export default {
       },
       fontFamily: {
         sans: ["Manrope", "ui-sans-serif", "system-ui"],
+      },
+      boxShadow: {
+        "wizard-md": "0px 4px 10px 0px rgba(0, 0, 0, 0.1)",
       },
     },
   },
