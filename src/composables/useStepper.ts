@@ -1,5 +1,5 @@
 import {ref} from "vue";
-import * as yup from "yup";
+import * as yup from "yup"; // Define a step type if needed
 
 // Define a step type if needed
 interface Step {
