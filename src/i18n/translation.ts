@@ -11,7 +11,7 @@ const Trans = {
   },
 
   get currentLocale(): string {
-    return i18n.global.locale.value as string;
+    return i18n.global.locale.value || "";
   },
 
   set currentLocale(newLocale: string) {
@@ -39,10 +39,7 @@ const Trans = {
   },
 
   getUserLocale(): { locale: string; localeNoRegion: string } {
-    const locale =
-      window.navigator.language ||
-      window.navigator.userLanguage ||
-      Trans.defaultLocale;
+    const locale = window.navigator.language || Trans.defaultLocale;
 
     return {
       locale,
@@ -53,7 +50,7 @@ const Trans = {
   getPersistedLocale(): string | null {
     const persistedLocale = localStorage.getItem("user-locale");
 
-    if (Trans.isLocaleSupported(persistedLocale)) {
+    if (persistedLocale && Trans.isLocaleSupported(persistedLocale)) {
       return persistedLocale;
     } else {
       return null;

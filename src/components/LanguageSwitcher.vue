@@ -3,8 +3,8 @@
     <option
       v-for="sLocale in supportedLocales"
       :key="`locale-${sLocale}`"
-      :value="sLocale"
       :selected="locale === sLocale"
+      :value="sLocale"
     >
       {{ t(`locale.${sLocale}`) }}
     </option>
@@ -19,10 +19,9 @@ import Tr from "@/i18n/translation";
 export default {
   setup() {
     const { t, locale } = useI18n();
+    const router = useRouter();
 
     const supportedLocales = Tr.supportedLocales;
-
-    const router = useRouter();
 
     const switchLanguage = async (event) => {
       const newLocale = event.target.value;

@@ -37,7 +37,6 @@
     "default": "Dieser Wert scheint ungültig zu sein.",
     "required": "{path} ist ein Pflichtfeld.",
     "email": "Dies muss eine gültige E-Mail-Adresse sein.",
-    "equals": "Sie müssen die Nutzungsbedingungen akzeptieren.",
-    "test": "Validation test ERMAN"
+    "accept_terms": "Sie müssen die Nutzungsbedingungen akzeptieren."
   }
 }

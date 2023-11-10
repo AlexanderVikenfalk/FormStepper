@@ -22,7 +22,7 @@
     "email": "Email",
     "agree_to_terms": "I agree with the terms and conditions.",
     "labels": {
-      "first_name": "First name test",
+      "first_name": "First name",
       "last_name": "Last name",
       "github_username": "Github user name"
     },
@@ -37,7 +37,6 @@
     "default": "This value seems to be invalid.",
     "required": "{path} is a required field.",
     "email": "This must be a valid email.",
-    "equals": "You must accept the terms and conditions.",
-    "test": "Validation test"
+    "accept_terms": "You must accept the terms and conditions."
   }
 }
