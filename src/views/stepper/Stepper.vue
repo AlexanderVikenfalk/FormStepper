@@ -1,14 +1,14 @@
-<script setup lang="ts">
-import { ref, defineAsyncComponent } from "vue";
+<script lang="ts" setup>
+import { ref } from "vue";
 import useStepper from "@/composables/useStepper";
-import { steps } from "@/components/stepper/steps.ts";
+import { stepValidationSchema } from "@/utils/stepValidationSchema.ts";
 import FormStep from "@/components/FormStep.vue";
 import FormWizard from "@/components/FormWizard.vue";
 
 const { currentStepIndex, currentStep, nextStep, previousStep, submitStepper } =
-  useStepper(steps);
+  useStepper(stepValidationSchema);
 
-const formData = ref({}); // Initialize form data object
+const formData = ref({});
 </script>
 
 <template>
@@ -19,8 +19,8 @@ const formData = ref({}); // Initialize form data object
     class="min-height-full height-full"
     @submit="submitStepper"
   >
-    <template v-for="(step, index) in steps">
-      <FormStep :key="index" v-if="currentStepIndex === index">
+    <template v-for="(step, index) in stepValidationSchema">
+      <FormStep v-if="currentStepIndex === index" :key="index">
         <component :is="step.component" :form-data="formData" />
       </FormStep>
     </template>

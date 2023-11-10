@@ -1,10 +1,7 @@
 <template>
-  <div class="flex flex-1 justify-center items-center">
+  <div class="layout-base-wrapper">
     <slot />
   </div>
 </template>
 
-<script setup>
-import TheStepper from "@/components/TheStepper.vue";
-import TheFooter from "@/components/TheFooter.vue";
-</script>
+<script setup></script>

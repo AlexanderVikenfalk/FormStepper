@@ -1,4 +1,4 @@
-import { RouteRecordRaw, createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
 import WizardLayout from "@/layouts/WizardLayout.vue";
 
@@ -6,13 +6,13 @@ const routes: Array<RouteRecordRaw> = [
   {
     name: "Home",
     path: "/home",
-    component: () => import("../views/Stepper.vue"),
+    component: () => import("../views/stepper/Stepper.vue"),
     meta: { layout: WizardLayout },
   },
   {
     name: "Stepper",
-    path: "/stepper",
-    component: () => import("../views/Stepper.vue"),
+    path: "/:locale/stepper",
+    component: () => import("../views/stepper/Stepper.vue"),
     meta: { layout: WizardLayout },
   },
   {
