@@ -8,14 +8,21 @@ import { useGithubUser } from "@/composables/useGithubUser";
 
 const { fetchUser, error } = useGithubUser();
 
-const githubUsernameCheck = async (username) => {
-  await fetchUser(username);
-  if (error.value) {
-    return false; // If there's an error, the validation fails
-  }
-  return true; // If there's no error, the validation passes
-};
-
+// const userNameValidationSchema = yup
+//   .string()
+//   .required(i18n.global.t("validation.required"))
+//   .test(
+//     "github-username-exists",
+//     i18n.global.t("validation.github_user_name_invalid"),
+//     async (value) => {
+//       if (!value || loading.value) {
+//         // If loading is already in progress, return true to avoid multiple calls
+//         return true;
+//       }
+//       await fetchUser(value);
+//       return !error.value;
+//     },
+//   );
 const noValidationSchema = yup.object({});
 export const stepValidationSchema = [
   {
@@ -25,16 +32,15 @@ export const stepValidationSchema = [
   {
     component: StepPersonalData,
     validationSchema: yup.object({
-      userName: yup
+      firstName: yup
         .string()
         .required(() => i18n.global.t("validation.required"))
-        .test(
-          "is-github-username-valid",
-          () => i18n.global.t("validation.githubUsernameInvalid"),
-          function (value) {
-            return githubUsernameCheck(value);
-          },
-        ),
+        .label(i18n.global.t("wizard.labels.first_name")),
+      lastName: yup
+        .string()
+        .required()
+        .label(i18n.global.t("wizard.labels.last_name")),
+      userName: yup.string().required().label("guthub"),
     }),
   },
   {

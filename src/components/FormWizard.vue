@@ -2,7 +2,7 @@
 import { computed, ref } from "vue";
 import { useForm } from "vee-validate";
 import { useGithubUser } from "@/composables/useGithubUser";
-import { useFormStore } from "@/stores/useFormStore";
+import { useFormStore } from "@/stores/formStore";
 import { stepValidationSchema } from "@/utils/stepValidationSchema.ts";
 import SpinnerIcon from "@/components/SpinnerIcon.vue";
 

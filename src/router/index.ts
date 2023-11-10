@@ -6,13 +6,13 @@ const routes: Array<RouteRecordRaw> = [
   {
     name: "Home",
     path: "/home",
-    component: () => import("../views/stepper/Stepper.vue"),
+    component: () => import("../views/stepper/FormStepper.vue"),
     meta: { layout: WizardLayout },
   },
   {
     name: "Stepper",
     path: "/:locale/stepper",
-    component: () => import("../views/stepper/Stepper.vue"),
+    component: () => import("../views/stepper/FormStepper.vue"),
     meta: { layout: WizardLayout },
   },
   {

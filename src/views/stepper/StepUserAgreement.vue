@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ErrorMessage, Field } from "vee-validate";
-import { useFormStore } from "@/stores/useFormStore"; // Make sure this path is correct
+import { useFormStore } from "@/stores/formStore.ts"; // Make sure this path is correct
 
 // Use your Pinia store to manage form data
 const formStore = useFormStore();
