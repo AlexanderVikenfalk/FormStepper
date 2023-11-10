@@ -24,7 +24,8 @@
     "labels": {
       "first_name": "First name",
       "last_name": "Last name",
-      "github_username": "Github user name"
+      "github_username": "Github user name",
+      "email": "Email"
     },
     "placeholders": {
       "email": "{account}{'@'}{domain}",
@@ -37,6 +38,7 @@
     "default": "This value seems to be invalid.",
     "required": "{path} is a required field.",
     "email": "This must be a valid email.",
-    "accept_terms": "You must accept the terms and conditions."
+    "accept_terms": "You must accept the terms and conditions.",
+    "github_user_name_invalid": "GitHub user not found"
   }
 }
