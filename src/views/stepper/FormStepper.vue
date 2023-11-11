@@ -1,14 +1,14 @@
 <script lang="ts" setup>
-import { ref } from "vue";
-import useStepper from "@/composables/useStepper";
-import { stepValidationSchema } from "@/utils/stepValidationSchema.ts";
-import FormStep from "@/components/FormStep.vue";
-import FormWizard from "@/components/FormWizard.vue";
+import { ref } from 'vue'
+import useStepper from '@/composables/useStepper'
+import { stepValidationSchema } from '@/utils/stepValidationSchema.ts'
+import FormStep from '@/components/FormStep.vue'
+import FormWizard from '@/components/FormWizard.vue'
 
-const { currentStepIndex, currentStep, nextStep, previousStep, submitStepper } =
-  useStepper(stepValidationSchema);
+const { currentStepIndex, nextStep, previousStep, submitStepper } =
+  useStepper(stepValidationSchema)
 
-const formData = ref({});
+const formData = ref({})
 </script>
 
 <template>

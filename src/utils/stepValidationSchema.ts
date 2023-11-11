@@ -1,12 +1,11 @@
-import * as yup from "yup";
-import StepWelcome from "@/views/stepper/StepWelcome.vue";
-import StepPersonalData from "@/views/stepper/StepPersonalData.vue";
-import StepUserAgreement from "@/views/stepper/StepUserAgreement.vue";
-import StepResult from "@/views/stepper/StepResult.vue";
-import i18n from "@/i18n";
-import { useGithubUser } from "@/composables/useGithubUser";
+import * as yup from 'yup'
+import StepWelcome from '@/views/stepper/StepWelcome.vue'
+import StepPersonalData from '@/views/stepper/StepPersonalData.vue'
+import StepUserAgreement from '@/views/stepper/StepUserAgreement.vue'
+import StepResult from '@/views/stepper/StepResult.vue'
+import i18n from '@/i18n'
 
-const { fetchUser, error } = useGithubUser();
+// const { fetchUser, error } = useGithubUser();
 
 // const userNameValidationSchema = yup
 //   .string()
@@ -23,7 +22,7 @@ const { fetchUser, error } = useGithubUser();
 //       return !error.value;
 //     },
 //   );
-const noValidationSchema = yup.object({});
+const noValidationSchema = yup.object({})
 export const stepValidationSchema = [
   {
     component: StepWelcome,
@@ -34,29 +33,29 @@ export const stepValidationSchema = [
     validationSchema: yup.object({
       firstName: yup
         .string()
-        .required(() => i18n.global.t("validation.required"))
-        .label(i18n.global.t("wizard.labels.first_name")),
+        .required(() => i18n.global.t('validation.required'))
+        .label(i18n.global.t('wizard.labels.first_name')),
       lastName: yup
         .string()
         .required()
-        .label(i18n.global.t("wizard.labels.last_name")),
-      userName: yup.string().required().label("guthub"),
+        .label(i18n.global.t('wizard.labels.last_name')),
+      userName: yup.string().required().label('guthub'),
     }),
   },
   {
     component: StepUserAgreement,
     validationSchema: yup.object({
-      email: yup.string().required().email().label("Email"),
+      email: yup.string().required().email().label('Email'),
       terms: yup
         .boolean()
         .default(false)
-        .required(i18n.global.t("validation.accept_terms"))
-        .equals([true], i18n.global.t("validation.accept_terms"))
-        .label(i18n.global.t("wizard.agree_to_terms")),
+        .required(i18n.global.t('validation.accept_terms'))
+        .equals([true], i18n.global.t('validation.accept_terms'))
+        .label(i18n.global.t('wizard.agree_to_terms')),
     }),
   },
   {
     component: StepResult,
     validationSchema: noValidationSchema,
   },
-];
+]
