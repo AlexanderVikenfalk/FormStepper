@@ -1,9 +1,9 @@
 import * as yup from 'yup'
-import StepWelcome from '@/views/stepper/StepWelcome.vue'
-import StepPersonalData from '@/views/stepper/StepPersonalData.vue'
-import StepUserAgreement from '@/views/stepper/StepUserAgreement.vue'
-import StepResult from '@/views/stepper/StepResult.vue'
-import i18n from '@/i18n'
+import {default as StepWelcome} from '@/views/stepper/StepWelcome.vue'
+import {default as StepPersonalData} from '@/views/stepper/StepPersonalData.vue'
+import {default as StepUserAgreement} from '@/views/stepper/StepUserAgreement.vue'
+import {default as StepResult} from '@/views/stepper/StepResult.vue'
+import i18n from '@/i18n' // const { fetchUser, error } = useGithubUser();
 
 // const { fetchUser, error } = useGithubUser();
 
@@ -22,8 +22,9 @@ import i18n from '@/i18n'
 //       return !error.value;
 //     },
 //   );
+
 const noValidationSchema = yup.object({})
-export const stepValidationSchema = [
+export const stepValidationSchema: Step[] = [
   {
     component: StepWelcome,
     validationSchema: noValidationSchema,
@@ -33,13 +34,28 @@ export const stepValidationSchema = [
     validationSchema: yup.object({
       firstName: yup
         .string()
-        .required(() => i18n.global.t('validation.required'))
+        .required(() =>
+          i18n.global.t('wizard.validation.required', {
+            field: i18n.global.t('wizard.labels.first_name'),
+          }),
+        )
         .label(i18n.global.t('wizard.labels.first_name')),
       lastName: yup
         .string()
-        .required()
+        .required(() =>
+          i18n.global.t('wizard.validation.required', {
+            field: i18n.global.t('wizard.labels.last_name'),
+          }),
+        )
         .label(i18n.global.t('wizard.labels.last_name')),
-      userName: yup.string().required().label('guthub'),
+      userName: yup
+        .string()
+        .required(() =>
+          i18n.global.t('wizard.validation.required', {
+            field: i18n.global.t('wizard.labels.github_username'),
+          }),
+        )
+        .label('wizard.labels.github_username'),
     }),
   },
   {

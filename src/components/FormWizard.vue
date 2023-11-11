@@ -61,7 +61,7 @@ const onPrevious = () => {
         class="button-secondary"
         @click.prevent="onPrevious"
       >
-        Previous
+        {{ $t('navigation.previous') }}
       </button>
 
       <!-- Grow the space between buttons -->
@@ -73,7 +73,7 @@ const onPrevious = () => {
         class="button-primary"
         type="submit"
       >
-        Next
+        {{ $t('navigation.next') }}
       </button>
 
       <!-- Show "Submit" button if on the second last step -->
@@ -87,7 +87,7 @@ const onPrevious = () => {
           <SpinnerIcon />
         </span>
 
-        <span v-else>Submit</span>
+        <span v-else> {{ $t('navigation.submit') }}</span>
       </button>
     </div>
   </form>

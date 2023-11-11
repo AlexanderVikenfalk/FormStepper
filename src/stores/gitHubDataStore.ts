@@ -1,11 +1,11 @@
-import { defineStore } from "pinia";
+import { defineStore } from 'pinia'
 
-export const useGitHubDataStore = defineStore("gitHubDataStore", {
+export const useGitHubDataStore = defineStore('gitHubDataStore', {
   state: () => ({
     gitHubData: {}, // initial empty state
   }),
   getters: {
-    filteredUserData: (state) => {
+    filteredUserData: state => {
       const {
         login,
         avatar_url,
@@ -17,7 +17,7 @@ export const useGitHubDataStore = defineStore("gitHubDataStore", {
         public_repos,
         followers,
         following,
-      } = state.gitHubData;
+      } = state.gitHubData
       return {
         login,
         avatar_url,
@@ -29,14 +29,12 @@ export const useGitHubDataStore = defineStore("gitHubDataStore", {
         public_repos,
         followers,
         following,
-      };
+      }
     },
   },
   actions: {
     addUserData(userData) {
-      console.log(this.gitHubData);
-      console.log(userData);
-      this.gitHubData = userData;
+      this.gitHubData = userData
     },
   },
-});
+})
