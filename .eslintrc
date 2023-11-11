@@ -1,0 +1,31 @@
+{
+  "root": true,
+  "env": {
+    "node": true
+  },
+  "extends": [
+    "plugin:vue/vue3-recommended",
+    "eslint:recommended",
+    "@vue/typescript/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "parser": "vue-eslint-parser",
+  "parserOptions": {
+    "parser": "@typescript-eslint/parser",
+    // to parse TypeScript
+    "ecmaVersion": 2020,
+    // allows for the parsing of modern ECMAScript features
+    "sourceType": "module",
+    // allows for the use of imports
+    "extraFileExtensions": [
+      ".vue"
+    ]
+    // allows for linting Vue files
+  },
+  "rules": {
+    // Define your ESLint rules here. For example:
+    "no-console": "warn",
+    "no-debugger": "warn"
+  }
+}
