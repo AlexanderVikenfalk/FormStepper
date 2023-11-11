@@ -52,21 +52,29 @@ export const stepValidationSchema: Step[] = [
         .string()
         .required(() =>
           i18n.global.t('wizard.validation.required', {
-            field: i18n.global.t('wizard.labels.github_username'),
+            field: i18n.global.t('wizard.labels.user_name'),
           }),
         )
-        .label('wizard.labels.github_username'),
+        .label('wizard.labels.user_name'),
     }),
   },
   {
     component: StepUserAgreement,
     validationSchema: yup.object({
-      email: yup.string().required().email().label('Email'),
+      email: yup
+        .string()
+        .required(() =>
+          i18n.global.t('wizard.validation.required', {
+            field: i18n.global.t('wizard.labels.email'),
+          }),
+        )
+        .email()
+        .label('Email'),
       terms: yup
         .boolean()
         .default(false)
-        .required(i18n.global.t('validation.accept_terms'))
-        .equals([true], i18n.global.t('validation.accept_terms'))
+        .required()
+        .equals([true], i18n.global.t('wizard.validation.accept_terms'))
         .label(i18n.global.t('wizard.agree_to_terms')),
     }),
   },

@@ -1,6 +1,11 @@
 <script lang="ts" setup>
 import { ErrorMessage, Field } from 'vee-validate'
 import { useFormStore } from '@/stores/formStore.ts'
+import { useRequiredLabel } from '@/composables/useRequiredLabel.ts'
+
+const firstNameLabel = useRequiredLabel('first_name', true)
+const lastNameLabel = useRequiredLabel('last_name', true)
+const userNameLabel = useRequiredLabel('user_name', true)
 
 const formStore = useFormStore()
 </script>
@@ -13,7 +18,7 @@ const formStore = useFormStore()
     <article class="wizard-content-wrapper">
       <div class="wizard-input-wrapper">
         <label class="wizard-input-label" for="firstName">
-          {{ $t('wizard.labels.first_name') }}
+          {{ firstNameLabel }}
         </label>
         <Field
           id="firstName"
@@ -30,7 +35,7 @@ const formStore = useFormStore()
 
       <div class="wizard-input-wrapper">
         <label class="wizard-input-label" for="lastName">
-          {{ $t('wizard.labels.last_name') }}
+          {{ lastNameLabel }}
         </label>
         <Field
           id="lastName"
@@ -47,12 +52,12 @@ const formStore = useFormStore()
 
       <div class="wizard-input-wrapper">
         <label class="wizard-input-label" for="userName">
-          {{ $t('wizard.labels.github_username') }}
+          {{ userNameLabel }}
         </label>
         <Field
           id="userName"
           v-model="formStore.formData.userName"
-          :placeholder="$t('wizard.placeholders.github_username')"
+          :placeholder="$t('wizard.placeholders.user_name')"
           class="wizard-input"
           name="userName"
           type="text"

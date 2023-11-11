@@ -1,9 +1,13 @@
 <script lang="ts" setup>
-import { ErrorMessage, Field } from "vee-validate";
-import { useFormStore } from "@/stores/formStore.ts"; // Make sure this path is correct
+import { ErrorMessage, Field } from 'vee-validate'
+import { useFormStore } from '@/stores/formStore.ts'
+import { useRequiredLabel } from '@/composables/useRequiredLabel.ts' // Make sure this path is correct
+
+const emailLabel = useRequiredLabel('email', true)
+const termsLabel = useRequiredLabel('agree_to_terms', true)
 
 // Use your Pinia store to manage form data
-const formStore = useFormStore();
+const formStore = useFormStore()
 </script>
 
 <template>
@@ -14,9 +18,7 @@ const formStore = useFormStore();
 
     <article class="wizard-content-wrapper">
       <div class="wizard-input-wrapper">
-        <label class="wizard-input-label" for="email">{{
-          $t("wizard.email")
-        }}</label>
+        <label class="wizard-input-label" for="email">{{ emailLabel }}</label>
         <Field
           id="email"
           v-model="formStore.formData.email"
@@ -45,9 +47,7 @@ const formStore = useFormStore();
             name="terms"
             type="checkbox"
           />
-          <label class="inline-block ml-2" for="terms">{{
-            $t("wizard.agree_to_terms")
-          }}</label>
+          <label class="inline-block ml-2" for="terms">{{ termsLabel }}</label>
         </div>
         <div class="wizard-input-error-wrapper">
           <ErrorMessage class="wizard-input-error" name="terms" />

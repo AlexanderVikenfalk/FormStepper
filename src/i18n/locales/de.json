@@ -30,7 +30,7 @@
     "labels": {
       "first_name": "Vorname",
       "last_name": "Nachname",
-      "github_username": "GitHub-Benutzername",
+      "user_name": "GitHub-Benutzername",
       "email": "E-Mail",
       "required_field": "(erforderlich)"
     },
@@ -38,7 +38,7 @@
       "email": "{account}{'@'}{domain}",
       "first_name": "Axel",
       "last_name": "Springer",
-      "github_username": "Caesar"
+      "user_name": "Caesar"
     },
     "validation": {
       "default": "Dieser Wert scheint ungültig zu sein.",

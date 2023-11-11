@@ -26,19 +26,19 @@
     "step_three_header": "3. View your GitHub profile",
     "step_three_info": "Take a peek at the GitHub stats and profile details.",
     "email": "Email",
-    "agree_to_terms": "I agree with the terms and conditions.",
     "labels": {
       "first_name": "First name",
       "last_name": "Last name",
-      "github_username": "Github user name",
+      "user_name": "Github user name",
       "email": "Email",
-      "required_field": "(required)"
+      "required_field": "(required)",
+      "agree_to_terms": "I agree with the terms and conditions."
     },
     "placeholders": {
       "email": "{account}{'@'}{domain}",
       "first_name": "Axel",
       "last_name": "Springer",
-      "github_username": "Caesar"
+      "user_name": "Caesar"
     },
     "validation": {
       "default": "This value seems to be invalid.",

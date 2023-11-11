@@ -30,7 +30,7 @@
     "labels": {
       "first_name": "Förnamn",
       "last_name": "Efternamn",
-      "github_username": "GitHub-användarnamn",
+      "user_name": "GitHub-användarnamn",
       "email": "E-post",
       "required_field": "(obligatoriskt)"
     },
@@ -38,7 +38,7 @@
       "email": "{account}{'@'}{domain}",
       "first_name": "Axel",
       "last_name": "Springer",
-      "github_username": "Caesar"
+      "user_name": "Caesar"
     },
     "validation": {
       "default": "Detta värde verkar vara ogiltigt.",
