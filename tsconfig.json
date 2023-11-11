@@ -1,27 +1,39 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
-    "target": "ES2020",
+    "target": "ESNext",
     "useDefineForClassFields": true,
     "module": "ESNext",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "lib": [
+      "ESNext",
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "skipLibCheck": true,
     "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "allowSyntheticDefaultImports": true,
+    "jsx": "preserve",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "preserve",
-    "allowSyntheticDefaultImports": true,
-    "baseUrl": "./",
+    "esModuleInterop": true,
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": [
+        "src/*"
+      ]
     },
     /* Linting */
-    "strict": false, // Set strict to false to configure options manually
-    "strictNullChecks": true, // Enable strict null checks
-    "strictFunctionTypes": false, // Disable strict function types
-    "strictBindCallApply": true, // Enable other strict checks if needed
+    "strict": false,
+    // Set strict to false to configure options manually
+    "strictNullChecks": true,
+    // Enable strict null checks
+    "strictFunctionTypes": false,
+    // Disable strict function types
+    "strictBindCallApply": true,
+    // Enable other strict checks if needed
     "strictPropertyInitialization": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
@@ -31,6 +43,17 @@
     "noFallthroughCasesInSwitch": true,
     "checkJS": true
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "vite.config.*",
+    "auto-imports.d.ts"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }
