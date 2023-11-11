@@ -1,11 +1,8 @@
 <script lang="ts" setup>
-import { ErrorMessage, Field } from "vee-validate";
-import { useFormStore } from "@/stores/formStore.ts"; // Make sure this path is correct
+import { ErrorMessage, Field } from 'vee-validate'
+import { useFormStore } from '@/stores/formStore.ts'
 
-// Use your Pinia store to manage form data
-const formStore = useFormStore();
-
-// Remove the separate script block that was here before as it's not needed anymore
+const formStore = useFormStore()
 </script>
 
 <template>
@@ -16,7 +13,7 @@ const formStore = useFormStore();
     <article class="wizard-content-wrapper">
       <div class="wizard-input-wrapper">
         <label class="wizard-input-label" for="firstName">
-          {{ $t("wizard.labels.first_name") }}
+          {{ $t('wizard.labels.first_name') }}
         </label>
         <Field
           id="firstName"
@@ -33,7 +30,7 @@ const formStore = useFormStore();
 
       <div class="wizard-input-wrapper">
         <label class="wizard-input-label" for="lastName">
-          {{ $t("wizard.labels.last_name") }}
+          {{ $t('wizard.labels.last_name') }}
         </label>
         <Field
           id="lastName"
@@ -50,7 +47,7 @@ const formStore = useFormStore();
 
       <div class="wizard-input-wrapper">
         <label class="wizard-input-label" for="userName">
-          {{ $t("wizard.labels.github_username") }}
+          {{ $t('wizard.labels.github_username') }}
         </label>
         <Field
           id="userName"
@@ -67,7 +64,3 @@ const formStore = useFormStore();
     </article>
   </div>
 </template>
-
-<style scoped>
-/* Your styles here */
-</style>

@@ -6,31 +6,46 @@
   },
   "error": {
     "page_not_found": {
-      "description": "Sidan du letade efter kunde inte hittas. Vänligen försök igen.",
-      "header": "Sidan kunde inte hittas"
+      "description": "Sidan du letade efter hittades inte. Var god försök igen.",
+      "header": "Sidan hittades inte"
     }
+  },
+  "navigation": {
+    "home": "Återvänd hem",
+    "next": "Nästa",
+    "previous": "Föregående",
+    "submit": "Skicka in"
   },
   "wizard": {
     "welcome_header": "Välkommen till GitHub Profiler!",
-    "intro_text": "Låt oss börja. På bara några steg kommer du att kunna se GitHub-information för vilken användare som helst du vill undersöka.",
+    "intro_text": "Låt oss börja. På bara några steg kommer du att kunna se GitHub-detaljer för vilken användare som helst du vill kolla in.",
     "step_one_header": "1. Berätta om dig själv",
-    "step_one_info": "Dela några grundläggande uppgifter, som ditt namn.",
-    "step_two_header": "2. Ange din e-post och godkänn villkoren",
+    "step_one_info": "Dela lite grundläggande information, som ditt namn.",
+    "step_two_header": "2. Fyll i din e-post & godkänn villkoren",
     "step_two_info": "Ange din e-postadress och acceptera användaravtalet för att fortsätta.",
     "step_three_header": "3. Visa din GitHub-profil",
-    "step_three_info": "Ta en titt på GitHub-statistiken och profiluppgifterna.",
+    "step_three_info": "Ta en titt på GitHub-statistiken och profildetaljerna.",
     "email": "E-post",
     "agree_to_terms": "Jag godkänner villkoren.",
     "labels": {
       "first_name": "Förnamn",
       "last_name": "Efternamn",
-      "github_username": "GitHub-användarnamn"
+      "github_username": "GitHub-användarnamn",
+      "email": "E-post",
+      "required_field": "(obligatoriskt)"
     },
     "placeholders": {
       "email": "{account}{'@'}{domain}",
       "first_name": "Axel",
       "last_name": "Springer",
       "github_username": "Caesar"
+    },
+    "validation": {
+      "default": "Detta värde verkar vara ogiltigt.",
+      "required": "{field} är ett obligatoriskt fält.",
+      "email": "Detta måste vara en giltig e-post.",
+      "accept_terms": "Du måste acceptera villkoren.",
+      "github_user_name_invalid": "GitHub-användare hittades inte"
     }
   }
 }

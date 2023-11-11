@@ -10,6 +10,12 @@
       "header": "Page not found"
     }
   },
+  "navigation": {
+    "home": "Return Home",
+    "next": "Next",
+    "previous": "Previous",
+    "submit": "Submit"
+  },
   "wizard": {
     "welcome_header": "Welcome to GitHub Profiler!",
     "intro_text": "Let's get started. In just a few steps, you'll be viewing the GitHub details for any user you want to check out.",
@@ -25,20 +31,21 @@
       "first_name": "First name",
       "last_name": "Last name",
       "github_username": "Github user name",
-      "email": "Email"
+      "email": "Email",
+      "required_field": "(required)"
     },
     "placeholders": {
       "email": "{account}{'@'}{domain}",
       "first_name": "Axel",
       "last_name": "Springer",
       "github_username": "Caesar"
+    },
+    "validation": {
+      "default": "This value seems to be invalid.",
+      "required": "{field} is a required field.",
+      "email": "This must be a valid email.",
+      "accept_terms": "You must accept the terms and conditions.",
+      "github_user_name_invalid": "GitHub user not found"
     }
-  },
-  "validation": {
-    "default": "This value seems to be invalid.",
-    "required": "{path} is a required field.",
-    "email": "This must be a valid email.",
-    "accept_terms": "You must accept the terms and conditions.",
-    "github_user_name_invalid": "GitHub user not found"
   }
 }
