@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
+import LanguageSwitcher from '@/components/LanguageSwitcher.vue'
 </script>
 
 <template>
@@ -10,7 +10,10 @@ import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
       <div
         class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl"
       >
-        <router-link class="flex items-center justify-center w-1/5" to="/">
+        <router-link
+          class="flex items-center justify-center w-1/5"
+          to="/wizard"
+        >
           <Icon name="logo" />
         </router-link>
         <div class="flex items-center lg:order-2">

@@ -40,10 +40,12 @@ const { handleSubmit } = useForm({
 })
 
 const onSubmit = handleSubmit(async values => {
-  console.log('test')
   formStore.updateFormData(values)
   if (!isLastStep.value) {
     nextStep(nextStepName.value)
+  }
+  if (isLastStep.value) {
+    formStore.resetFormData()
   }
 })
 </script>
@@ -62,17 +64,11 @@ const onSubmit = handleSubmit(async values => {
 
       <div class="flex-grow"></div>
 
-      <button
-        class="button-primary"
-        type="submit"
-        @click.prevent="nextStep(nextStepName)"
-      >
+      <button v-if="!isLastStep" class="button-primary" type="submit">
         <span v-if="loading" class="flex justify-center items-center">
           <SpinnerIcon />
         </span>
-        <span>{{
-          isLastStep ? $t('navigation.submit') : $t('navigation.next')
-        }}</span>
+        <span>{{ $t('navigation.next') }}</span>
       </button>
     </div>
   </form>

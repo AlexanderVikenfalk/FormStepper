@@ -9,15 +9,20 @@ interface FormData {
   terms: boolean
 }
 
+// Define initial state as a function to reuse it for resetting state
+function initialState(): FormData {
+  return {
+    firstName: '',
+    lastName: '',
+    userName: '',
+    email: '',
+    terms: false,
+  }
+}
+
 export const useFormStore = defineStore('form', {
   state: (): { formData: FormData } => ({
-    formData: {
-      firstName: '',
-      lastName: '',
-      userName: '',
-      email: '',
-      terms: false,
-    },
+    formData: initialState(),
   }),
   actions: {
     updateFormData(newData: Partial<FormData>) {
@@ -26,6 +31,9 @@ export const useFormStore = defineStore('form', {
         ...this.formData,
         ...newData,
       }
+    },
+    resetFormData() {
+      this.formData = initialState()
     },
   },
 })
