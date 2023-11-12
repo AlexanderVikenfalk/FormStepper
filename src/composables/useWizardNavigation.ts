@@ -12,7 +12,7 @@ export default function useWizardNavigation() {
   const totalSteps = stepperStore.totalSteps
   const currentStepIndex = ref(0)
 
-  const isLastStep = computed(() => currentStepIndex.value === totalSteps - 2)
+  const isLastStep = computed(() => currentStepIndex.value === totalSteps - 1)
   const hasPreviousStep = computed(() => currentStepIndex.value > 0)
 
   const nextStep = nextStepName => {

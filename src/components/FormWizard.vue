@@ -5,7 +5,8 @@ import { useFormStore } from '@/stores/formStore'
 import useWizardNavigation from '@/composables/useWizardNavigation'
 import SpinnerIcon from '@/components/SpinnerIcon.vue'
 import { stepSchema } from '@/utils/stepSchema'
-import FormStep from '@/components/FormStep.vue' // make sure to import your stepSchema
+import FormStep from '@/components/FormStep.vue'
+import i18n from '@/i18n'
 
 const formStore = useFormStore()
 const { fetchUser, loading, error } = useGithubUser()
@@ -27,16 +28,22 @@ const currentComponent = computed(() => {
 })
 
 const nextStepName = computed(() => {
-  if (!isLastStep) {
-    return stepSchema[currentStepIndex.value - 1].name
-  }
-  return stepSchema[currentStepIndex.value + 1].name
+  // Get the name of the next step, only if we're not at the last step.
+  return isLastStep.value ? null : stepSchema[currentStepIndex.value + 1]?.name
 })
 
 const previousStepName = computed(() => {
-  if (currentStepIndex.value >= 0) {
-    return stepSchema[currentStepIndex.value - 1].name
+  // Get the name of the previous step, only if there is a previous step.
+  return currentStepIndex.value > 0
+    ? stepSchema[currentStepIndex.value - 1]?.name
+    : null
+})
+
+const displayError = computed(() => {
+  if (error.value) {
+    return i18n.global.t('error.request_error')
   }
+  return null
 })
 
 const { handleSubmit } = useForm({
@@ -44,12 +51,21 @@ const { handleSubmit } = useForm({
   initialValues: formStore.formData,
 })
 
+const isUsernameStep = computed(() => currentStepIndex.value === 1)
+
 const onSubmit = handleSubmit(async values => {
+  // Update the form data with the new values.
   formStore.updateFormData(values)
+
+  if (isUsernameStep.value) {
+    // The GitHub username has been provided, fetch the GitHub user.
+    await fetchUser(formStore.formData.userName) // Replace with actual property if different
+  }
+
+  // Navigate to the next step if not the last step, else finalize
   if (!isLastStep.value) {
     nextStep(nextStepName.value)
-  }
-  if (isLastStep.value) {
+  } else {
     formStore.resetFormData()
   }
 })
@@ -57,6 +73,9 @@ const onSubmit = handleSubmit(async values => {
 
 <template>
   <form @submit.prevent="onSubmit">
+    <div v-if="displayError" class="error-message">
+      {{ displayError }}
+    </div>
     <FormStep :current-component="currentComponent" />
     <div class="flex justify-between items-center mt-auto">
       <button
