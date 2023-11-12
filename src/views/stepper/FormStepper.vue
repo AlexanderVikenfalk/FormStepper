@@ -7,6 +7,7 @@ import ProgressBar from '@/components/ProgressBar.vue'
   <div class="layout-base-wrapper">
     <main class="layout-wizard">
       <ProgressBar />
+
       <FormWizard class="min-height-full height-full" />
     </main>
   </div>

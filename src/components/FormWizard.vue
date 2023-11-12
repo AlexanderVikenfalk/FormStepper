@@ -4,19 +4,19 @@ import { useGithubUser } from '@/composables/useGithubUser'
 import { useFormStore } from '@/stores/formStore'
 import useWizardNavigation from '@/composables/useWizardNavigation'
 import SpinnerIcon from '@/components/SpinnerIcon.vue'
-import { stepSchema } from '@/utils/stepSchema' // make sure to import your stepSchema
+import { stepSchema } from '@/utils/stepSchema'
+import FormStep from '@/components/FormStep.vue' // make sure to import your stepSchema
 
 const formStore = useFormStore()
 const { fetchUser, loading, error } = useGithubUser()
 
-const totalSteps = stepSchema.length // Total number of steps derived from stepSchema
 const {
   currentStepIndex,
   nextStep,
   previousStep,
   isLastStep,
   hasPreviousStep,
-} = useWizardNavigation(totalSteps)
+} = useWizardNavigation()
 
 const currentSchema = computed(() => {
   return stepSchema[currentStepIndex.value].validationSchema
@@ -54,9 +54,7 @@ const onSubmit = handleSubmit(async values => {
 
 <template>
   <form @submit.prevent="onSubmit">
-    <component :is="currentComponent" :key="currentStepIndex" />
-    Current Step index {{ currentStepIndex }}
-
+    <FormStep :current-component="currentComponent" />
     <div class="flex justify-between items-center mt-auto">
       <button
         v-if="hasPreviousStep"
