@@ -7,8 +7,8 @@ import './index.css'
 import Icon from '@/components/shared/iconPresenter.vue'
 
 createApp(App)
-  .use(i18n)
-  .use(router)
   .use(createPinia())
+  .use(router)
+  .use(i18n)
   .component('Icon', Icon)
   .mount('#app')

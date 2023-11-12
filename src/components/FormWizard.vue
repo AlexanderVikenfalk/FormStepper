@@ -27,11 +27,16 @@ const currentComponent = computed(() => {
 })
 
 const nextStepName = computed(() => {
+  if (!isLastStep) {
+    return stepSchema[currentStepIndex.value - 1].name
+  }
   return stepSchema[currentStepIndex.value + 1].name
 })
 
 const previousStepName = computed(() => {
-  return stepSchema[currentStepIndex.value - 1].name
+  if (currentStepIndex.value >= 0) {
+    return stepSchema[currentStepIndex.value - 1].name
+  }
 })
 
 const { handleSubmit } = useForm({
