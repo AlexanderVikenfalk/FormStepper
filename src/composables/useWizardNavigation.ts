@@ -12,7 +12,7 @@ export default function useWizardNavigation() {
   const totalSteps = stepperStore.totalSteps
   const currentStepIndex = ref(0)
 
-  const isLastStep = computed(() => currentStepIndex.value === totalSteps - 1)
+  const isLastStep = computed(() => currentStepIndex.value === totalSteps - 2)
   const hasPreviousStep = computed(() => currentStepIndex.value > 0)
 
   const nextStep = nextStepName => {
@@ -30,12 +30,20 @@ export default function useWizardNavigation() {
     }
   }
 
+  const finalizeProcess = () => {
+    // Define the logic for finalizing the process here
+    console.log('Final process logic goes here')
+    // For example, navigating to a confirmation page or showing a modal
+    // router.push({ name: 'final-confirmation' });
+  }
+
   return {
     currentStepIndex,
     stepCounter,
     nextStep,
     previousStep,
     isLastStep,
+    finalizeProcess,
     hasPreviousStep,
   }
 }

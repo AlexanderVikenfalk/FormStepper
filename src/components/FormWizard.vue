@@ -37,17 +37,13 @@ const previousStepName = computed(() => {
 const { handleSubmit } = useForm({
   validationSchema: currentSchema,
   initialValues: formStore.formData,
-  // keepValuesOnUnmount: true,
 })
 
 const onSubmit = handleSubmit(async values => {
+  console.log('test')
   formStore.updateFormData(values)
   if (!isLastStep.value) {
     nextStep(nextStepName.value)
-  } else {
-    // Do final submission work here
-    // You might want to perform a final validation or submit the data to an API
-    emit('submit', values) // Emit an event for the parent component
   }
 })
 </script>
@@ -66,15 +62,17 @@ const onSubmit = handleSubmit(async values => {
 
       <div class="flex-grow"></div>
 
-      <button v-if="!isLastStep" class="button-primary" type="submit">
-        {{ $t('navigation.next') }}
-      </button>
-
-      <button v-else-if="isLastStep" class="button-primary" type="submit">
+      <button
+        class="button-primary"
+        type="submit"
+        @click.prevent="nextStep(nextStepName)"
+      >
         <span v-if="loading" class="flex justify-center items-center">
           <SpinnerIcon />
         </span>
-        <span v-else> {{ $t('navigation.submit') }}</span>
+        <span>{{
+          isLastStep ? $t('navigation.submit') : $t('navigation.next')
+        }}</span>
       </button>
     </div>
   </form>

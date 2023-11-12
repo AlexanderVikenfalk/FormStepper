@@ -1,12 +1,14 @@
-<script setup lang="ts">
+<template>
+  <TransitionWrapper>
+    <component :is="currentComponent" />
+  </TransitionWrapper>
+</template>
+
+<script setup>
+import TransitionWrapper from '@/components/TransitionWrapper.vue'
 import { defineProps } from 'vue'
 
-// Define props to accept the current component
 const props = defineProps({
   currentComponent: Object,
 })
 </script>
-
-<template>
-  <component :is="props.currentComponent" />
-</template>
