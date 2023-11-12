@@ -6,8 +6,6 @@ import { stepSchema } from '@/utils/stepSchema.ts'
 
 const stepperStore = useStepperStore()
 export default function useWizardNavigation() {
-  const stepCounter = ref(0)
-
   stepperStore.setTotalSteps(stepSchema.length)
   const totalSteps = stepperStore.totalSteps
   const currentStepIndex = ref(0)
@@ -39,7 +37,6 @@ export default function useWizardNavigation() {
 
   return {
     currentStepIndex,
-    stepCounter,
     nextStep,
     previousStep,
     isLastStep,

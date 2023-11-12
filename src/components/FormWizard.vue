@@ -57,12 +57,13 @@ const onSubmit = handleSubmit(async values => {
   // Update the form data with the new values.
   formStore.updateFormData(values)
 
+  // TODO: Check username right away
+
   if (isUsernameStep.value) {
     // The GitHub username has been provided, fetch the GitHub user.
     await fetchUser(formStore.formData.userName) // Replace with actual property if different
   }
 
-  // Navigate to the next step if not the last step, else finalize
   if (!isLastStep.value) {
     nextStep(nextStepName.value)
   } else {
@@ -89,10 +90,12 @@ const onSubmit = handleSubmit(async values => {
       <div class="flex-grow"></div>
 
       <button v-if="!isLastStep" class="button-primary" type="submit">
+        <!-- Show spinner when loading is true -->
         <span v-if="loading" class="flex justify-center items-center">
           <SpinnerIcon />
         </span>
-        <span>{{ $t('navigation.next') }}</span>
+        <!-- Show "Next" text when loading is false -->
+        <span v-else>{{ $t('navigation.next') }}</span>
       </button>
     </div>
   </form>
