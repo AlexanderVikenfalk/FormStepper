@@ -1,24 +1,41 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import DefaultLayout from '@/layouts/DefaultLayout.vue'
-import WizardLayout from '@/layouts/WizardLayout.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
-    name: 'Stepper',
-    path: '/home',
+    path: '/wizard',
     component: () => import('../views/stepper/FormStepper.vue'),
-    meta: { layout: WizardLayout },
+    children: [
+      {
+        path: '/welcome',
+        name: 'StepWelcome',
+        component: () => import('../views/stepper/StepWelcome.vue'),
+      },
+      {
+        path: '/personal-data',
+        name: 'StepPersonalData',
+        component: () => import('../views/stepper/StepPersonalData.vue'),
+      },
+      {
+        path: '/terms',
+        name: 'StepUserAgreement',
+        component: () => import('../views/stepper/StepUserAgreement.vue'),
+      },
+      {
+        path: '/result',
+        name: 'StepResult',
+        component: () => import('../views/stepper/StepResult.vue'),
+      },
+    ],
   },
   {
-    name: 'Redirect',
     path: '/',
-    redirect: '/home',
+    name: 'Redirect',
+    redirect: '/wizard',
   },
   {
     name: 'NotFound',
     path: '/:pathMatch(.*)*',
     component: () => import('../views/NotFound.vue'),
-    meta: { layout: DefaultLayout },
   },
 ]
 

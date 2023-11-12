@@ -6,7 +6,7 @@ Form Wizard
 
 - [ ] Features
     - [ ] Display GitHub result
-    - [x] Add stepValidationSchema
+    - [x] Add stepSchema
     - [x] Add translations
 - [ ] Code Quality
     - [ ] Add ZOD as decoder

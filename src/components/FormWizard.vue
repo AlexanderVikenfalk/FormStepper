@@ -1,92 +1,81 @@
 <script lang="ts" setup>
-import { computed, ref } from 'vue'
 import { useForm } from 'vee-validate'
 import { useGithubUser } from '@/composables/useGithubUser'
 import { useFormStore } from '@/stores/formStore'
-import { stepValidationSchema } from '@/utils/stepValidationSchema.ts'
+import useWizardNavigation from '@/composables/useWizardNavigation'
 import SpinnerIcon from '@/components/SpinnerIcon.vue'
+import { stepSchema } from '@/utils/stepSchema' // make sure to import your stepSchema
 
 const formStore = useFormStore()
 const { fetchUser, loading, error } = useGithubUser()
 
-const currentStepIndex = ref(0)
-const currentStep = computed(() => stepValidationSchema[currentStepIndex.value])
-const currentValidationSchema = computed(
-  () => currentStep.value.validationSchema,
-)
+const totalSteps = stepSchema.length // Total number of steps derived from stepSchema
+const {
+  currentStepIndex,
+  nextStep,
+  previousStep,
+  isLastStep,
+  hasPreviousStep,
+} = useWizardNavigation(totalSteps)
 
-// Set up form context with vee-validate using the current validation schema
-const { handleSubmit } = useForm({
-  validationSchema: currentValidationSchema,
-  initialValues: formStore.formData, // Use Pinia state for initial values
+const currentSchema = computed(() => {
+  return stepSchema[currentStepIndex.value].validationSchema
 })
 
-// Define submit logic
+const currentComponent = computed(() => {
+  return stepSchema[currentStepIndex.value].component
+})
+
+const nextStepName = computed(() => {
+  return stepSchema[currentStepIndex.value + 1].name
+})
+
+const previousStepName = computed(() => {
+  return stepSchema[currentStepIndex.value - 1].name
+})
+
+const { handleSubmit } = useForm({
+  validationSchema: currentSchema,
+  initialValues: formStore.formData,
+  // keepValuesOnUnmount: true,
+})
+
 const onSubmit = handleSubmit(async values => {
   formStore.updateFormData(values)
-  // Update Pinia state with current form values
-
-  // Check if it's the second last step and ready to submit
-  if (currentStepIndex.value === stepValidationSchema.length - 2) {
-    await fetchUser(formStore.formData.userName) // Fetch GitHub user using the username from Pinia state
-    // Check for errors after awaiting the fetchUser call
-    if (!loading.value && !error.value) {
-      // This condition ensures that we move to the next step only if no error occurred
-      currentStepIndex.value++
-    }
-  } else if (currentStepIndex.value < stepValidationSchema.length - 2) {
-    // If it's not the time to submit yet, simply go to the next step
-    currentStepIndex.value++
+  if (!isLastStep.value) {
+    nextStep(nextStepName.value)
+  } else {
+    // Do final submission work here
+    // You might want to perform a final validation or submit the data to an API
+    emit('submit', values) // Emit an event for the parent component
   }
 })
-
-// Define previous step logic
-const onPrevious = () => {
-  if (currentStepIndex.value > 0) {
-    currentStepIndex.value--
-  }
-}
 </script>
 
 <template>
   <form @submit.prevent="onSubmit">
-    <!-- Dynamically render the current step component -->
-    <component :is="currentStep.component" :key="currentStepIndex" />
+    <component :is="currentComponent" :key="currentStepIndex" />
+    Current Step index {{ currentStepIndex }}
 
-    <!-- Buttons to navigate steps -->
     <div class="flex justify-between items-center mt-auto">
-      <!-- Show "Previous" button if not on the first step -->
       <button
-        v-if="currentStepIndex > 0"
+        v-if="hasPreviousStep"
         class="button-secondary"
-        @click.prevent="onPrevious"
+        @click.prevent="previousStep(previousStepName)"
       >
         {{ $t('navigation.previous') }}
       </button>
 
-      <!-- Grow the space between buttons -->
       <div class="flex-grow"></div>
 
-      <!-- Show "Next" button if on a step before the second last step -->
-      <button
-        v-if="currentStepIndex < stepValidationSchema.length - 2"
-        class="button-primary"
-        type="submit"
-      >
+      <button v-if="!isLastStep" class="button-primary" type="submit">
         {{ $t('navigation.next') }}
       </button>
 
-      <!-- Show "Submit" button if on the second last step -->
-      <button
-        v-else-if="currentStepIndex === stepValidationSchema.length - 2"
-        class="button-primary"
-        type="submit"
-      >
-        <!-- Display spinner when loading -->
+      <button v-else-if="isLastStep" class="button-primary" type="submit">
         <span v-if="loading" class="flex justify-center items-center">
           <SpinnerIcon />
         </span>
-
         <span v-else> {{ $t('navigation.submit') }}</span>
       </button>
     </div>

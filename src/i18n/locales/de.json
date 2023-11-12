@@ -26,8 +26,8 @@
     "step_three_header": "3. Betrachten Sie Ihr GitHub-Profil",
     "step_three_info": "Werfen Sie einen Blick auf die GitHub-Statistiken und Profildetails.",
     "email": "E-Mail",
-    "agree_to_terms": "Ich stimme den Allgemeinen Geschäftsbedingungen zu.",
     "labels": {
+      "agree_to_terms": "Ich stimme den Allgemeinen Geschäftsbedingungen zu.",
       "first_name": "Vorname",
       "last_name": "Nachname",
       "user_name": "GitHub-Benutzername",

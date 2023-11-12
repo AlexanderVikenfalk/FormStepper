@@ -24,12 +24,14 @@ import i18n from '@/i18n' // const { fetchUser, error } = useGithubUser();
 //   );
 
 const noValidationSchema = yup.object({})
-export const stepValidationSchema: Step[] = [
+export const stepSchema: Step[] = [
   {
+    name: 'StepWelcome',
     component: StepWelcome,
     validationSchema: noValidationSchema,
   },
   {
+    name: 'StepPersonalData',
     component: StepPersonalData,
     validationSchema: yup.object({
       firstName: yup
@@ -59,6 +61,7 @@ export const stepValidationSchema: Step[] = [
     }),
   },
   {
+    name: 'StepUserAgreement',
     component: StepUserAgreement,
     validationSchema: yup.object({
       email: yup
@@ -75,10 +78,11 @@ export const stepValidationSchema: Step[] = [
         .default(false)
         .required()
         .equals([true], i18n.global.t('wizard.validation.accept_terms'))
-        .label(i18n.global.t('wizard.agree_to_terms')),
+        .label(i18n.global.t('wizard.labels.agree_to_terms')),
     }),
   },
   {
+    name: 'StepResult',
     component: StepResult,
     validationSchema: noValidationSchema,
   },

@@ -26,8 +26,8 @@
     "step_three_header": "3. Visa din GitHub-profil",
     "step_three_info": "Ta en titt på GitHub-statistiken och profildetaljerna.",
     "email": "E-post",
-    "agree_to_terms": "Jag godkänner villkoren.",
     "labels": {
+      "agree_to_terms": "Jag godkänner villkoren.",
       "first_name": "Förnamn",
       "last_name": "Efternamn",
       "user_name": "GitHub-användarnamn",

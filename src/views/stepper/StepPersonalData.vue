@@ -6,7 +6,6 @@ import { useRequiredLabel } from '@/composables/useRequiredLabel.ts'
 const firstNameLabel = useRequiredLabel('first_name', true)
 const lastNameLabel = useRequiredLabel('last_name', true)
 const userNameLabel = useRequiredLabel('user_name', true)
-
 const formStore = useFormStore()
 </script>
 
