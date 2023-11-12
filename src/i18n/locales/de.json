@@ -6,7 +6,7 @@
   },
   "error": {
     "page_not_found": {
-      "description": "Die Seite, nach der Sie gesucht haben, wurde nicht gefunden. Bitte versuchen Sie es erneut.",
+      "description": "Die von Ihnen gesuchte Seite wurde nicht gefunden. Bitte versuchen Sie es erneut.",
       "header": "Seite nicht gefunden"
     }
   },
@@ -17,22 +17,28 @@
     "submit": "Einreichen"
   },
   "wizard": {
+    "steps": {
+      "welcome": "Einführung",
+      "personal_data": "Benutzerinfo",
+      "terms": "Benutzervereinbarung",
+      "result": "Ergebnis"
+    },
     "welcome_header": "Willkommen beim GitHub Profiler!",
-    "intro_text": "Lass uns beginnen. In nur wenigen Schritten können Sie die GitHub-Details für jeden Benutzer ansehen, den Sie überprüfen möchten.",
-    "step_one_header": "1. Erzählen Sie uns von sich selbst",
-    "step_one_info": "Teilen Sie einige Grundinformationen, wie Ihren Namen.",
+    "intro_text": "Lass uns anfangen. In nur wenigen Schritten sehen Sie die GitHub-Details für jeden Benutzer, den Sie überprüfen möchten.",
+    "step_one_header": "1. Erzählen Sie uns von sich",
+    "step_one_info": "Teilen Sie einige grundlegende Informationen, wie Ihren Namen.",
     "step_two_header": "2. Geben Sie Ihre E-Mail ein & stimmen Sie den Bedingungen zu",
     "step_two_info": "Geben Sie Ihre E-Mail-Adresse ein und akzeptieren Sie die Benutzervereinbarung, um fortzufahren.",
-    "step_three_header": "3. Betrachten Sie Ihr GitHub-Profil",
+    "step_three_header": "3. Sehen Sie sich Ihr GitHub-Profil an",
     "step_three_info": "Werfen Sie einen Blick auf die GitHub-Statistiken und Profildetails.",
     "email": "E-Mail",
     "labels": {
-      "agree_to_terms": "Ich stimme den Allgemeinen Geschäftsbedingungen zu.",
       "first_name": "Vorname",
       "last_name": "Nachname",
-      "user_name": "GitHub-Benutzername",
+      "user_name": "Github-Benutzername",
       "email": "E-Mail",
-      "required_field": "(erforderlich)"
+      "required_field": "(erforderlich)",
+      "agree_to_terms": "Ich stimme den Allgemeinen Geschäftsbedingungen zu."
     },
     "placeholders": {
       "email": "{account}{'@'}{domain}",
@@ -42,9 +48,9 @@
     },
     "validation": {
       "default": "Dieser Wert scheint ungültig zu sein.",
-      "required": "{field} ist ein erforderliches Feld.",
+      "required": "{field} ist ein Pflichtfeld.",
       "email": "Dies muss eine gültige E-Mail sein.",
-      "accept_terms": "Sie müssen die Allgemeinen Geschäftsbedingungen akzeptieren.",
+      "accept_terms": "Sie müssen den Bedingungen zustimmen.",
       "github_user_name_invalid": "GitHub-Benutzer nicht gefunden"
     }
   }

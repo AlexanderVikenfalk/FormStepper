@@ -17,6 +17,12 @@
     "submit": "Submit"
   },
   "wizard": {
+    "steps": {
+      "welcome": "Intro",
+      "personal_data": "User info",
+      "terms": "User Agreement",
+      "result": "Result"
+    },
     "welcome_header": "Welcome to GitHub Profiler!",
     "intro_text": "Let's get started. In just a few steps, you'll be viewing the GitHub details for any user you want to check out.",
     "step_one_header": "1. Tell us about yourself",
