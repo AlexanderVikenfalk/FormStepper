@@ -44,6 +44,9 @@ const onSubmit = handleSubmit(async values => {
   if (!isLastStep.value) {
     nextStep(nextStepName.value)
   }
+  if (isLastStep.value) {
+    formStore.resetFormData()
+  }
 })
 </script>
 
