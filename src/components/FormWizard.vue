@@ -5,7 +5,6 @@ import { useFormStore } from '@/stores/formStore'
 import useWizardNavigation from '@/composables/useWizardNavigation'
 import SpinnerIcon from '@/components/SpinnerIcon.vue'
 import { stepSchema } from '@/utils/stepSchema'
-import FormStep from '@/components/FormStep.vue'
 import i18n from '@/i18n'
 
 const formStore = useFormStore()
@@ -19,6 +18,7 @@ const {
   hasPreviousStep,
 } = useWizardNavigation()
 
+// Todo: see if validationschema can be made racrive
 const currentSchema = computed(() => {
   return stepSchema[currentStepIndex.value].validationSchema
 })
@@ -49,6 +49,7 @@ const displayError = computed(() => {
 const { handleSubmit } = useForm({
   validationSchema: currentSchema,
   initialValues: formStore.formData,
+  keepValuesOnUnmount: true,
 })
 
 const isUsernameStep = computed(() => currentStepIndex.value === 1)
@@ -77,7 +78,18 @@ const onSubmit = handleSubmit(async values => {
     <div v-if="displayError" class="error-message">
       {{ displayError }}
     </div>
-    <FormStep :current-component="currentComponent" />
+    <transition
+      name="fade"
+      mode="out-in"
+      enter-active-class="transition-opacity duration-300"
+      leave-active-class="transition-opacity duration-300"
+      enter-from-class="opacity-0"
+      leave-to-class="opacity-0"
+    >
+      <!-- Dynamic component with :is and :key -->
+      <!-- The key change is what triggers the transition -->
+      <component :is="currentComponent" :key="currentStepIndex" />
+    </transition>
     <div class="flex justify-between items-center mt-auto">
       <button
         v-if="hasPreviousStep"
