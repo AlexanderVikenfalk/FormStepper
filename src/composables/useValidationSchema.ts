@@ -2,6 +2,23 @@
 import { computed, ComputedRef } from 'vue'
 import * as yup from 'yup'
 import i18n from '@/i18n'
+import { useWebAPI } from '@/composables/useWebAPI.ts'
+import { useDebounceFn as useDebounce } from '@vueuse/core'
+
+const { fetchUser, error, isLoading } = useWebAPI()
+
+const debounceDelay = 500
+const username = ref('')
+const debouncedFetchUser = useDebounce(async () => {
+  if (username.value) {
+    await fetchUser(username.value)
+  }
+}, debounceDelay)
+
+// Watch the username ref and call the debounced function on change
+watch(username, () => {
+  debouncedFetchUser()
+})
 
 interface ValidationSchemas {
   StepWelcome: yup.ObjectSchema
@@ -28,11 +45,26 @@ export function useValidationSchema(): ComputedRef<ValidationSchemas> {
   )
 
   const userNameValidationSchema = computed(() =>
-    yup.string().required(
-      i18n.global.t('wizard.validation.required', {
-        field: i18n.global.t('wizard.labels.user_name'),
-      }),
-    ),
+    yup
+      .string()
+      .required(
+        i18n.global.t('wizard.validation.required', {
+          field: i18n.global.t('wizard.labels.user_name'),
+        }),
+      )
+      .test(
+        'wizard.github-username-exists',
+        i18n.global.t('wizard.validation.github_user_name_invalid'),
+        async value => {
+          username.value = value
+          if (!value || isLoading.value) {
+            return false
+          }
+          await new Promise(resolve => setTimeout(resolve, debounceDelay + 100))
+
+          return !error.value
+        },
+      ),
   )
 
   const emailValidationSchema = computed(() =>

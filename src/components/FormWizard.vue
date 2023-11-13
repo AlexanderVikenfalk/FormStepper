@@ -1,15 +1,16 @@
 <script lang="ts" setup>
 import * as yup from 'yup' // This line was missing and is required for yup to be recognized
 import { useForm } from 'vee-validate'
-import { useGithubUser } from '@/composables/useGithubUser'
+import { useWebAPI } from '@/composables/useWebAPI.ts'
 import { useFormStore } from '@/stores/formStore'
+import i18n from '@/i18n'
 import useWizardNavigation from '@/composables/useWizardNavigation'
 import SpinnerIcon from '@/components/SpinnerIcon.vue'
 import { useValidationSchema } from '@/composables/useValidationSchema'
 import { stepSchema } from '@/utils/stepSchema'
 
 const formStore = useFormStore()
-const { fetchUser, loading, error } = useGithubUser()
+const { error, setLoading, isLoading } = useWebAPI()
 
 const totalSteps = stepSchema.length
 
@@ -55,28 +56,16 @@ const displayError = computed(() => {
 const { handleSubmit } = useForm({
   validationSchema: currentSchema,
   initialValues: formStore.formData,
-  // keepValuesOnUnmount: true,
+  keepValuesOnUnmount: true,
 })
 
-const isUsernameStep = computed(() => currentStepIndex.value === 1)
-
-const onSubmit = handleSubmit(async values => {
-  // Update the form data with the new values.
+const onSubmit = handleSubmit(values => {
   formStore.updateFormData(values)
-
-  // TODO: Check username right away
-
-  // we will fetch github user data and set it in state as soon as possible
-  if (isUsernameStep.value) {
-    await fetchUser(formStore.formData.userName)
-  }
 
   if (!isLastStep.value) {
     nextStep(nextStepName.value)
-  }
-
-  // Reset the form data when we leave the second last step
-  if (isSecondLastStep) {
+  } else if (isLastStep.value) {
+    // await new Promise(resolve => setTimeout(resolve, 2000))
     formStore.resetFormData()
   }
 })
@@ -84,9 +73,8 @@ const onSubmit = handleSubmit(async values => {
 
 <template>
   <form @submit.prevent="onSubmit">
-    <div v-if="displayError" class="wizard-network-error">
-      {{ displayError }}
-    </div>
+    <div v-if="displayError" class="wizard-network-error"></div>
+    {{ isLoading }}
     <transition
       name="fade"
       mode="out-in"
@@ -95,11 +83,10 @@ const onSubmit = handleSubmit(async values => {
       enter-from-class="opacity-0"
       leave-to-class="opacity-0"
     >
-      <!-- Dynamic component with :is and :key -->
-      <!-- The key change is what triggers the transition -->
       <component :is="currentComponent" :key="currentStepIndex" />
     </transition>
     <div class="flex justify-between items-center mt-auto">
+      {{ isLoading }}
       <button
         v-if="hasPreviousStep"
         class="button-secondary"
@@ -111,11 +98,10 @@ const onSubmit = handleSubmit(async values => {
       <div class="flex-grow"></div>
 
       <button v-if="!isLastStep" class="button-primary" type="submit">
-        <!-- Show spinner when loading is true -->
-        <span v-if="loading" class="flex justify-center items-center">
+        <span v-if="isLoading" class="flex justify-center items-center">
           <SpinnerIcon />
         </span>
-        <!-- Show "Next" text when loading is false -->
+
         <span v-else>{{
           isSecondLastStep ? $t('navigation.submit') : $t('navigation.next')
         }}</span>

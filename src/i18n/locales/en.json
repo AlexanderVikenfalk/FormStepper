@@ -5,6 +5,7 @@
     "sv": "Swedish"
   },
   "error": {
+    "unknown": "An unknown error occurred",
     "request_error": "An error occurred while processing your request: {error}",
     "page_not_found": {
       "description": "The page you were looking for was not found. Please try again.",

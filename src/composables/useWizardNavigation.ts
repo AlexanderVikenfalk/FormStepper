@@ -5,7 +5,6 @@ import { useStepperStore } from '@/stores/stepperStore'
 
 const stepperStore = useStepperStore()
 export default function useWizardNavigation(totalSteps: number) {
-  console.log(totalSteps)
   stepperStore.setTotalSteps(totalSteps)
 
   const currentStepIndex = ref(0)
@@ -14,6 +13,7 @@ export default function useWizardNavigation(totalSteps: number) {
   const isSecondLastStep = computed(
     () => currentStepIndex.value === totalSteps - 2,
   )
+
   const hasPreviousStep = computed(() => currentStepIndex.value > 0)
 
   const nextStep = nextStepName => {
@@ -31,20 +31,12 @@ export default function useWizardNavigation(totalSteps: number) {
     }
   }
 
-  const finalizeProcess = () => {
-    // Define the logic for finalizing the process here
-    console.log('Final process logic goes here')
-    // For example, navigating to a confirmation page or showing a modal
-    // router.push({ name: 'final-confirmation' });
-  }
-
   return {
     currentStepIndex,
     nextStep,
     previousStep,
     isLastStep,
     isSecondLastStep,
-    finalizeProcess,
     hasPreviousStep,
   }
 }
