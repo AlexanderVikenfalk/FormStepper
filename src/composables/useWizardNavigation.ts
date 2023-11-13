@@ -2,10 +2,11 @@
 
 import router from '@/router'
 import { useStepperStore } from '@/stores/stepperStore'
-import { stepSchema } from '@/utils/stepSchema.ts'
 
 const stepperStore = useStepperStore()
 export default function useWizardNavigation() {
+  // TODO: THIS NEEDS TO BE THE ACTUAL LENGTH OF STEPS
+  const stepSchema = [1, 2, 3, 4]
   stepperStore.setTotalSteps(stepSchema.length)
   const totalSteps = stepperStore.totalSteps
   const currentStepIndex = ref(0)

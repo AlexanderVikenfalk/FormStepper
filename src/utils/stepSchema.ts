@@ -23,6 +23,10 @@ import i18n from '@/i18n' // const { fetchUser, error } = useGithubUser();
 //     },
 //   );
 
+const termsNotAcceptedMessage = computed(() =>
+  i18n.global.t('wizard.validation.accept_terms'),
+)
+
 const noValidationSchema = yup.object({})
 export const stepSchema: Step[] = [
   {
@@ -72,12 +76,12 @@ export const stepSchema: Step[] = [
           }),
         )
         .email()
-        .label('Email'),
+        .label('wizard.labels.email'),
       terms: yup
         .boolean()
         .default(false)
-        .required()
-        .equals([true], i18n.global.t('wizard.validation.accept_terms'))
+        .required(termsNotAcceptedMessage.value)
+        .equals([true], termsNotAcceptedMessage.value)
         .label(i18n.global.t('wizard.labels.agree_to_terms')),
     }),
   },

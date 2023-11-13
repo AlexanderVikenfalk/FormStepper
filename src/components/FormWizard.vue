@@ -1,11 +1,12 @@
 <script lang="ts" setup>
+import * as yup from 'yup' // This line was missing and is required for yup to be recognized
 import { useForm } from 'vee-validate'
 import { useGithubUser } from '@/composables/useGithubUser'
 import { useFormStore } from '@/stores/formStore'
 import useWizardNavigation from '@/composables/useWizardNavigation'
 import SpinnerIcon from '@/components/SpinnerIcon.vue'
+import { useValidationSchema } from '@/composables/useValidationSchema'
 import { stepSchema } from '@/utils/stepSchema'
-import i18n from '@/i18n'
 
 const formStore = useFormStore()
 const { fetchUser, loading, error } = useGithubUser()
@@ -18,9 +19,13 @@ const {
   hasPreviousStep,
 } = useWizardNavigation()
 
-// Todo: see if validationschema can be made racrive
+// Fetch the validation schema composable
+const stepValidationSchemas = useValidationSchema()
+
+// Use the step index to access the current step's validation schema
 const currentSchema = computed(() => {
-  return stepSchema[currentStepIndex.value].validationSchema
+  const stepName = stepSchema[currentStepIndex.value].name // "StepWelcome", "StepPersonalData", etc.
+  return stepValidationSchemas.value[stepName] || yup.object({}) // Fallback to an empty schema if not defined
 })
 
 const currentComponent = computed(() => {
