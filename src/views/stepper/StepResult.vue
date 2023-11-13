@@ -1,7 +1,7 @@
 <template>
-  <div class="wizard-step-wrapper justify-center">
+  <div class="wizard-step-wrapper justify-center py-14">
     <div
-      class="wizard-content-wrapper flex justify-between full max-w-sm bg-white rounded-lg"
+      class="wizard-content-wrapper flex justify-between full max-w-sm bg-white rounded-lg my-20"
     >
       <div class="flex flex-col items-center pb-10">
         <img
@@ -22,6 +22,9 @@
             <span class="font-bold">{{
               store.filteredUserData.followers
             }}</span>
+            <span class="text-sm text-neutral-600">{{
+              $t('wizard.step_content.git_hub_following')
+            }}</span>
             <span class="text-sm text-neutral-600"></span>
           </div>
           <div class="flex flex-col items-center">
@@ -29,7 +32,7 @@
               store.filteredUserData.following
             }}</span>
             <span class="text-sm text-neutral-600">{{
-              $t('git_hub_following')
+              $t('wizard.step_content.git_hub_following')
             }}</span>
           </div>
           <div class="flex flex-col items-center">
@@ -37,7 +40,7 @@
               store.filteredUserData.public_repos
             }}</span>
             <span class="text-sm text-neutral-600">{{
-              $t('git_hub_repos')
+              $t('wizard.step_content.git_hub_repos')
             }}</span>
           </div>
         </div>

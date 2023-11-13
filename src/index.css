@@ -3,54 +3,61 @@
 @tailwind utilities;
 
 @layer base {
+    @font-face {
+        font-family: 'Manrope';
+        font-weight: 100 900;
+        src: url('assets/fonts/Manrope/Manrope-VariableFont_wght.ttf') format('truetype-variations');
+        font-display: swap;
+    }
     h1 {
-        @apply text-2xl sm:text-3xl md:text-4xl lg:text-headline leading-normal font-bold text-secondary-950;
+        @apply leading-normal font-bold text-secondary-950 text-headline text-4xl
     }
 
     h2 {
-        @apply text-xl sm:text-2xl md:text-3xl leading-normal font-bold text-secondary-950;
+        @apply leading-normal font-bold text-secondary-950
     }
 
     p {
-        @apply text-sm sm:text-base md:text-lg leading-relaxed text-neutral-500;
+        @apply leading-relaxed text-neutral-500 text-body text-base
     }
 
     li {
-        @apply text-sm sm:text-base mb-5;
+        @apply mb-5
     }
 }
 
+/* Example of refactoring based on your provided rule */
 @layer components {
     .button-primary {
         @apply bg-primary-400 hover:bg-primary-300 focus:ring-4 focus:ring-primary-300 rounded-lg px-5 py-2.5 focus:outline-none font-bold text-neutral-900 text-xs sm:text-sm;
     }
 
     .button-secondary {
-        @apply text-primary-600 focus:outline-none rounded-lg border border-primary-600 hover:bg-primary-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-primary-300 py-2.5 px-5 text-xs sm:text-sm;
+        @apply bg-white hover:bg-primary-100 focus:ring-4 focus:ring-primary-300 rounded-lg px-5 py-2.5 focus:outline-none border border-primary-600 text-primary-600 hover:text-primary-700 text-xs sm:text-sm;
     }
 
     .layout-base-wrapper {
-        @apply flex flex-col sm:flex-row flex-1 justify-center items-center;
+        @apply flex justify-center items-center flex-1 flex-col sm:flex-row;
     }
 
     .layout-wizard {
-        @apply bg-transparent w-full sm:w-3/4 lg:w-3/5 shadow-wizard-md p-4 sm:p-6 md:p-8 rounded-3xl;
+        @apply p-4 bg-transparent rounded-3xl shadow-wizard-md w-full sm:p-6 md:p-8 sm:w-3/4 lg:w-3/5;
     }
 
     .wizard-input {
-        @apply bg-neutral-100 placeholder-gray-400 text-neutral-900 rounded-lg focus:ring-primary-500 outline-primary-500 focus-visible:ring-primary-500 focus:border-primary-500 block w-full p-2.5 text-xs sm:text-sm;
+        @apply block w-full p-2.5 text-neutral-900 bg-neutral-100 placeholder-gray-400 rounded-lg text-xs focus:border-primary-500 focus:ring-primary-500 focus:ring-2 outline-primary-500 sm:text-sm;
     }
 
     .wizard-input-label {
-        @apply block mb-2 text-sm md:text-base text-neutral-900 font-bold;
+        @apply block mb-2 text-neutral-900 font-bold text-sm md:text-base;
     }
 
     .wizard-input-error {
-        @apply block mb-2 text-sm text-warning-500;
+        @apply block mb-2 text-warning-500 text-sm;
     }
 
     .wizard-network-error {
-        @apply text-lg bg-warning-600 text-neutral-50 text-center rounded
+        @apply text-lg text-neutral-50 bg-warning-600 rounded text-center;
     }
 
     .wizard-input-error-wrapper {
@@ -58,22 +65,22 @@
     }
 
     .wizard-input-wrapper {
-        @apply p-2 mt-1;
+        @apply mt-1 p-2;
     }
 
     .wizard-checkbox {
-        @apply w-4 h-4 text-primary-600 bg-neutral-100 border-neutral-300 rounded focus:ring-primary-500 focus:ring-2 outline-primary-500 focus-visible:ring-primary-500 focus:border-primary-500 accent-primary-400;
+        @apply w-4 h-4 text-primary-600 bg-neutral-100 border-neutral-300 rounded focus:ring-2 focus:ring-primary-500 focus:border-primary-500 accent-primary-400;
     }
 
     .wizard-step-wrapper {
-        @apply flex flex-col lg:flex-row h-auto lg:h-[60vh];
+        @apply flex h-auto flex-col lg:h-[60vh] lg:flex-row;
     }
 
     .wizard-icon-wrapper {
-        @apply hidden lg:flex items-center justify-center w-full lg:w-1/2;
+        @apply items-center justify-center w-full hidden lg:flex lg:w-1/2;
     }
 
     .wizard-content-wrapper {
-        @apply flex flex-col justify-center w-full lg:w-1/2;
+        @apply flex justify-center w-full flex-col lg:w-1/2;
     }
 }

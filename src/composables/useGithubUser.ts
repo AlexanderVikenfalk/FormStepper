@@ -31,11 +31,10 @@ export function useGithubUser() {
     }
   }
 
-  // Re-use the delay function here if you need to
   const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
   return {
-    userData: store.gitHubData, // bind to the store's state
+    userData: store.gitHubData,
     loading,
     error,
     fetchUser,

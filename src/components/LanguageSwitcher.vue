@@ -1,5 +1,5 @@
 <template>
-  <select @change="switchLanguage">
+  <select class="bg-white" @change="switchLanguage">
     <option
       v-for="sLocale in supportedLocales"
       :key="`locale-${sLocale}`"
