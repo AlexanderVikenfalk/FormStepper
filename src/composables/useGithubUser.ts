@@ -12,6 +12,9 @@ export function useGithubUser() {
     loading.value = true
     error.value = ''
 
+    //TODO decoder
+    //TODO handle github user fetch
+
     try {
       await delay(1000) // simulate a delay
       const response = await axios.get(

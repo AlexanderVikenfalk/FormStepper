@@ -54,7 +54,7 @@ const displayError = computed(() => {
 const { handleSubmit } = useForm({
   validationSchema: currentSchema,
   initialValues: formStore.formData,
-  keepValuesOnUnmount: true,
+  // keepValuesOnUnmount: true,
 })
 
 const isUsernameStep = computed(() => currentStepIndex.value === 1)
@@ -65,14 +65,17 @@ const onSubmit = handleSubmit(async values => {
 
   // TODO: Check username right away
 
+  // we will fetch github user data and set it in state as soon as possible
   if (isUsernameStep.value) {
-    // The GitHub username has been provided, fetch the GitHub user.
-    await fetchUser(formStore.formData.userName) // Replace with actual property if different
+    await fetchUser(formStore.formData.userName)
   }
 
   if (!isLastStep.value) {
     nextStep(nextStepName.value)
-  } else {
+  }
+
+  // Reset the form data when we leave the second last step
+  if (currentStepIndex.value === totalSteps - 1) {
     formStore.resetFormData()
   }
 })
