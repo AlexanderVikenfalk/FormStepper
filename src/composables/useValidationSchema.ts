@@ -8,7 +8,6 @@ interface ValidationSchemas {
   StepPersonalData: yup.ObjectSchema
   StepUserAgreement: yup.ObjectSchema
   StepResult: yup.ObjectSchema
-  // Add more steps if needed
 }
 
 export function useValidationSchema(): ComputedRef<ValidationSchemas> {
@@ -54,7 +53,7 @@ export function useValidationSchema(): ComputedRef<ValidationSchemas> {
       .oneOf([true], i18n.global.t('wizard.validation.accept_terms')),
   )
 
-  const stepValidationSchemas = computed<ValidationSchemas>(() => ({
+  return computed<ValidationSchemas>(() => ({
     StepWelcome: yup.object({}),
     StepPersonalData: yup.object({
       firstName: firstNameValidationSchema.value,
@@ -67,6 +66,4 @@ export function useValidationSchema(): ComputedRef<ValidationSchemas> {
     }),
     StepResult: yup.object({}),
   }))
-
-  return stepValidationSchemas
 }

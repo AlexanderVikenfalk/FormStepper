@@ -11,15 +11,16 @@ import { stepSchema } from '@/utils/stepSchema'
 const formStore = useFormStore()
 const { fetchUser, loading, error } = useGithubUser()
 
+const totalSteps = stepSchema.length
+
 const {
   currentStepIndex,
   nextStep,
   previousStep,
   isLastStep,
   hasPreviousStep,
-} = useWizardNavigation()
+} = useWizardNavigation(totalSteps)
 
-// Fetch the validation schema composable
 const stepValidationSchemas = useValidationSchema()
 
 // Use the step index to access the current step's validation schema

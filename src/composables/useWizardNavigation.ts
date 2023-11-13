@@ -4,11 +4,10 @@ import router from '@/router'
 import { useStepperStore } from '@/stores/stepperStore'
 
 const stepperStore = useStepperStore()
-export default function useWizardNavigation() {
-  // TODO: THIS NEEDS TO BE THE ACTUAL LENGTH OF STEPS
-  const stepSchema = [1, 2, 3, 4]
-  stepperStore.setTotalSteps(stepSchema.length)
-  const totalSteps = stepperStore.totalSteps
+export default function useWizardNavigation(totalSteps: number) {
+  console.log(totalSteps)
+  stepperStore.setTotalSteps(totalSteps)
+
   const currentStepIndex = ref(0)
 
   const isLastStep = computed(() => currentStepIndex.value === totalSteps - 1)
