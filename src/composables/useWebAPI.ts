@@ -1,6 +1,8 @@
-// useGithubUser.ts
+// useWebAPI.ts
 import axios from 'axios'
-import { useGitHubDataStore } from '@/stores/gitHubDataStore' // import the store
+import { ref } from 'vue'
+import { useGitHubDataStore } from '@/stores/gitHubDataStore'
+import { decodeGitHubUserResponse } from '@/utils/decoder'
 
 export function useWebAPI() {
   const store = useGitHubDataStore()
@@ -15,17 +17,17 @@ export function useWebAPI() {
     setLoading(true)
     error.value = ''
 
-    //TODO decoder
     try {
       const response = await axios.get(
         `https://api.github.com/users/${username}`,
       )
-      store.addUserData(response.data)
+      const userData = decodeGitHubUserResponse(response.data)
+      store.addUserData(userData)
     } catch (err) {
-      if (axios.isAxiosError(err)) {
-        error.value = err.message
+      if (axios.isAxiosError(err) && err.response) {
+        error.value = `GitHub API error: ${err.response.status} ${err.response.statusText}`
       } else if (err instanceof Error) {
-        error.value = err.message
+        error.value = `Unexpected error: ${err.message}`
       }
     } finally {
       setLoading(false)

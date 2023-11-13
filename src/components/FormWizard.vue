@@ -10,7 +10,7 @@ import { useValidationSchema } from '@/composables/useValidationSchema'
 import { stepSchema } from '@/utils/stepSchema'
 
 const formStore = useFormStore()
-const { error, setLoading, isLoading } = useWebAPI()
+const { error, isLoading } = useWebAPI()
 
 const totalSteps = stepSchema.length
 
@@ -74,7 +74,6 @@ const onSubmit = handleSubmit(values => {
 <template>
   <form @submit.prevent="onSubmit">
     <div v-if="displayError" class="wizard-network-error"></div>
-    {{ isLoading }}
     <transition
       name="fade"
       mode="out-in"
@@ -86,7 +85,6 @@ const onSubmit = handleSubmit(values => {
       <component :is="currentComponent" :key="currentStepIndex" />
     </transition>
     <div class="flex justify-between items-center mt-auto">
-      {{ isLoading }}
       <button
         v-if="hasPreviousStep"
         class="button-secondary"

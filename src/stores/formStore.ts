@@ -33,7 +33,6 @@ export const useFormStore = defineStore('form', {
       }
     },
     resetFormData() {
-      console.log('nuke')
       this.formData = initialState()
     },
   },
