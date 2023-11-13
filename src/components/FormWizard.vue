@@ -18,6 +18,7 @@ const {
   nextStep,
   previousStep,
   isLastStep,
+  isSecondLastStep,
   hasPreviousStep,
 } = useWizardNavigation(totalSteps)
 
@@ -75,7 +76,7 @@ const onSubmit = handleSubmit(async values => {
   }
 
   // Reset the form data when we leave the second last step
-  if (currentStepIndex.value === totalSteps - 1) {
+  if (isSecondLastStep) {
     formStore.resetFormData()
   }
 })
@@ -115,7 +116,9 @@ const onSubmit = handleSubmit(async values => {
           <SpinnerIcon />
         </span>
         <!-- Show "Next" text when loading is false -->
-        <span v-else>{{ $t('navigation.next') }}</span>
+        <span v-else>{{
+          isSecondLastStep ? $t('navigation.submit') : $t('navigation.next')
+        }}</span>
       </button>
     </div>
   </form>

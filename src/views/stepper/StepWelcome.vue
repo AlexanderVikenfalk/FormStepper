@@ -5,8 +5,7 @@
     </div>
     <article class="wizard-content-wrapper pr-4">
       <h1>{{ $t('wizard.step_content.welcome_header') }}</h1>
-
-      <p class="mb-5">
+      <p class="my-5">
         {{ $t('wizard.step_content.intro_text') }}
       </p>
       <ol>

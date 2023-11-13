@@ -11,6 +11,9 @@ export default function useWizardNavigation(totalSteps: number) {
   const currentStepIndex = ref(0)
 
   const isLastStep = computed(() => currentStepIndex.value === totalSteps - 1)
+  const isSecondLastStep = computed(
+    () => currentStepIndex.value === totalSteps - 2,
+  )
   const hasPreviousStep = computed(() => currentStepIndex.value > 0)
 
   const nextStep = nextStepName => {
@@ -40,6 +43,7 @@ export default function useWizardNavigation(totalSteps: number) {
     nextStep,
     previousStep,
     isLastStep,
+    isSecondLastStep,
     finalizeProcess,
     hasPreviousStep,
   }

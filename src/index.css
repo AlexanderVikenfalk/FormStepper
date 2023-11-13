@@ -10,7 +10,7 @@
         font-display: swap;
     }
     h1 {
-        @apply leading-normal font-bold text-secondary-950 text-headline text-4xl
+        @apply leading-normal font-bold text-secondary-950 text-headline
     }
 
     h2 {
