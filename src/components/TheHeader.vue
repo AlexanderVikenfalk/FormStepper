@@ -4,9 +4,7 @@ import LanguageSwitcher from '@/components/LanguageSwitcher.vue'
 
 <template>
   <header>
-    <nav
-      class="bg-white px-4 lg:px-6 py-2.5 dark:bg-gray-800 border-b-2 border-gray"
-    >
+    <nav class="px-4 lg:px-6 py-2.5 border-b-2 border-gray">
       <div
         class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl"
       >

@@ -3,10 +3,6 @@
     <div
       class="wizard-content-wrapper flex justify-between full max-w-sm bg-white rounded-lg"
     >
-      <div class="flex justify-end px-4 pt-4">
-        <!-- Dropdown button and menu here -->
-        <!-- ... -->
-      </div>
       <div class="flex flex-col items-center pb-10">
         <img
           :src="store.filteredUserData.avatar_url"
@@ -26,19 +22,23 @@
             <span class="font-bold">{{
               store.filteredUserData.followers
             }}</span>
-            <span class="text-sm text-neutral-600">Followers</span>
+            <span class="text-sm text-neutral-600"></span>
           </div>
           <div class="flex flex-col items-center">
             <span class="font-bold">{{
               store.filteredUserData.following
             }}</span>
-            <span class="text-sm text-neutral-600">Following</span>
+            <span class="text-sm text-neutral-600">{{
+              $t('git_hub_following')
+            }}</span>
           </div>
           <div class="flex flex-col items-center">
             <span class="font-bold">{{
               store.filteredUserData.public_repos
             }}</span>
-            <span class="text-sm text-neutral-600">Repos</span>
+            <span class="text-sm text-neutral-600">{{
+              $t('git_hub_repos')
+            }}</span>
           </div>
         </div>
       </div>

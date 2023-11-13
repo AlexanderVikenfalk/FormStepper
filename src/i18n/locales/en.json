@@ -5,7 +5,7 @@
     "sv": "Swedish"
   },
   "error": {
-    "request_error": "An error occurred while processing your request:",
+    "request_error": "An error occurred while processing your request: {error}",
     "page_not_found": {
       "description": "The page you were looking for was not found. Please try again.",
       "header": "Page not found"
@@ -24,15 +24,19 @@
       "terms": "User Agreement",
       "result": "Result"
     },
-    "welcome_header": "Welcome to GitHub Profiler!",
-    "intro_text": "Let's get started. In just a few steps, you'll be viewing the GitHub details for any user you want to check out.",
-    "step_one_header": "1. Tell us about yourself",
-    "step_one_info": "Share some basic info, like your name.",
-    "step_two_header": "2. Fill in your email & agree to terms",
-    "step_two_info": "Enter your email address and accept the user agreement to proceed.",
-    "step_three_header": "3. View your GitHub profile",
-    "step_three_info": "Take a peek at the GitHub stats and profile details.",
-    "email": "Email",
+    "step_content": {
+      "welcome_header": "Welcome to GitHub Profiler!",
+      "intro_text": "Let's get started. In just a few steps, you'll be viewing the GitHub details for any user you want to check out.",
+      "step_one_header": "1. Tell us about yourself",
+      "step_one_info": "Share some basic info, like your name.",
+      "step_two_header": "2. Fill in your email & agree to terms",
+      "step_two_info": "Enter your email address and accept the user agreement to proceed.",
+      "step_three_header": "3. View your GitHub profile",
+      "step_three_info": "Take a peek at the GitHub stats and profile details.",
+      "git_hub_followers": "Followers",
+      "git_hub_following": "Following",
+      "git_hub_repos": "Repos"
+    },
     "labels": {
       "first_name": "First name",
       "last_name": "Last name",

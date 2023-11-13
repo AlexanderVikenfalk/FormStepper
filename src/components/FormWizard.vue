@@ -41,9 +41,8 @@ const previousStepName = computed(() => {
 
 const displayError = computed(() => {
   if (error.value) {
-    return i18n.global.t('error.request_error')
+    return i18n.global.t('error.request_error', { error: error.value })
   }
-  return null
 })
 
 const { handleSubmit } = useForm({
@@ -75,7 +74,7 @@ const onSubmit = handleSubmit(async values => {
 
 <template>
   <form @submit.prevent="onSubmit">
-    <div v-if="displayError" class="error-message">
+    <div v-if="displayError" class="wizard-network-error">
       {{ displayError }}
     </div>
     <transition

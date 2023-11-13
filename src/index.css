@@ -22,11 +22,11 @@
 
 @layer components {
     .button-primary {
-        @apply bg-primary-400 hover:bg-primary-300 focus:ring-4 focus:ring-primary-300 rounded-lg px-5 py-2.5 focus:outline-none font-bold text-white text-xs sm:text-sm;
+        @apply bg-primary-400 hover:bg-primary-300 focus:ring-4 focus:ring-primary-300 rounded-lg px-5 py-2.5 focus:outline-none font-bold text-neutral-900 text-xs sm:text-sm;
     }
 
     .button-secondary {
-        @apply text-primary-600 focus:outline-none bg-white rounded-lg border border-primary-600 hover:bg-primary-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-primary-300 py-2.5 px-5 text-xs sm:text-sm;
+        @apply text-primary-600 focus:outline-none rounded-lg border border-primary-600 hover:bg-primary-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-primary-300 py-2.5 px-5 text-xs sm:text-sm;
     }
 
     .layout-base-wrapper {
@@ -34,7 +34,7 @@
     }
 
     .layout-wizard {
-        @apply bg-white w-full sm:w-3/4 lg:w-3/5 shadow-wizard-md p-4 sm:p-6 md:p-8 rounded-3xl;
+        @apply bg-transparent w-full sm:w-3/4 lg:w-3/5 shadow-wizard-md p-4 sm:p-6 md:p-8 rounded-3xl;
     }
 
     .wizard-input {
@@ -47,6 +47,10 @@
 
     .wizard-input-error {
         @apply block mb-2 text-sm text-warning-500;
+    }
+
+    .wizard-network-error {
+        @apply text-lg bg-warning-600 text-neutral-50 text-center rounded
     }
 
     .wizard-input-error-wrapper {
