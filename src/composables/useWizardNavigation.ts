@@ -1,5 +1,3 @@
-// useWizardNavigation.ts
-
 import router from '@/router'
 import { useStepperStore } from '@/stores/stepperStore'
 

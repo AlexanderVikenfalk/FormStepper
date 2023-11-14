@@ -1,19 +1,18 @@
 <script lang="ts" setup>
 import { ErrorMessage, Field } from 'vee-validate'
 import { useFormStore } from '@/stores/formStore.ts'
-import { useRequiredLabel } from '@/composables/useRequiredLabel.ts' // Make sure this path is correct
+import { useRequiredLabel } from '@/composables/useRequiredLabel.ts'
 
 const emailLabel = useRequiredLabel('email', true)
 const termsLabel = useRequiredLabel('agree_to_terms', true)
 
-// Use your Pinia store to manage form data
 const formStore = useFormStore()
 </script>
 
 <template>
   <div class="wizard-step-wrapper">
     <div class="wizard-icon-wrapper pr-4">
-      <icon name="step_terms"></icon>
+      <icon-presenter name="step_terms"></icon-presenter>
     </div>
 
     <article class="wizard-content-wrapper">

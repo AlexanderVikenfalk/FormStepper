@@ -27,7 +27,7 @@ const stepValidationSchemas = useValidationSchema()
 
 const currentSchema = computed(() => {
   const stepName = stepSchema[currentStepIndex.value].name
-  return stepValidationSchemas.value[stepName] || yup.object({}) // Fallback to an empty schema if not defined
+  return stepValidationSchemas.value[stepName] || yup.object({})
 })
 
 const currentComponent = computed(() => {
@@ -35,12 +35,10 @@ const currentComponent = computed(() => {
 })
 
 const nextStepName = computed(() => {
-  // Get the name of the next step, only if we're not at the last step.
   return isLastStep.value ? null : stepSchema[currentStepIndex.value + 1]?.name
 })
 
 const previousStepName = computed(() => {
-  // Get the name of the previous step, only if there is a previous step.
   return currentStepIndex.value > 0
     ? stepSchema[currentStepIndex.value - 1]?.name
     : null

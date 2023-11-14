@@ -1,4 +1,3 @@
-// composables/useValidationSchema.ts
 import { computed, ComputedRef } from 'vue'
 import * as yup from 'yup'
 import i18n from '@/i18n'
@@ -15,7 +14,6 @@ const debouncedFetchUser = useDebounce(async () => {
   }
 }, debounceDelay)
 
-// Watch the username ref and call the debounced function on change
 watch(username, () => {
   debouncedFetchUser()
 })

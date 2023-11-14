@@ -9,7 +9,7 @@ const icon = defineAsyncComponent(
   () =>
     import(
       /* @vite-ignore */
-      `/src/assets/icons/${props.name}.svg?component`
+      `/src/assets/icons/${props.name}.svg`
     ),
 )
 </script>

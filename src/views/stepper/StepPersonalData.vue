@@ -12,7 +12,7 @@ const formStore = useFormStore()
 <template>
   <div class="wizard-step-wrapper">
     <div class="wizard-icon-wrapper pr-4">
-      <icon name="step_personal_data" />
+      <icon-presenter name="step_personal_data" />
     </div>
     <article class="wizard-content-wrapper">
       <div class="wizard-input-wrapper">

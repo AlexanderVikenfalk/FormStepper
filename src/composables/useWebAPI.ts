@@ -1,4 +1,3 @@
-// useWebAPI.ts
 import axios from 'axios'
 import { ref } from 'vue'
 import { useGitHubDataStore } from '@/stores/gitHubDataStore'

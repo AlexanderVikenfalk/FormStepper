@@ -1,7 +1,7 @@
 <template>
   <div class="wizard-step-wrapper">
     <div class="wizard-icon-wrapper">
-      <Icon name="step_welcome" />
+      <IconPresenter name="step_welcome" />
     </div>
     <article class="wizard-content-wrapper pr-4">
       <h1>{{ $t('wizard.step_content.welcome_header') }}</h1>

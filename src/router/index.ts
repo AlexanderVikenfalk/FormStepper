@@ -1,6 +1,4 @@
-import {createRouter, createWebHistory, RouteRecordRaw} from 'vue-router'
-
-// TODO: Fix broken routing system
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
 const routes: Array<RouteRecordRaw> = [
   {

@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 
 export const useGitHubDataStore = defineStore('gitHubDataStore', {
   state: () => ({
-    gitHubData: {}, // initial empty state
+    gitHubData: {},
   }),
   getters: {
     filteredUserData: state => {

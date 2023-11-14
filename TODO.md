@@ -4,29 +4,25 @@ Form Wizard
 
 ### Column Name
 
-- [ ] Features
-    - [ ] Display GitHub result
-    - [x] Add stepSchema
-    - [x] Add translations
-- [ ] Code Quality
-    - [ ] Add ZOD as decoder
+- [x] Features
+    - [x] Display GitHub result
+        - [x] Add stepSchema
+        - [x] Add translations
+- [x] Code Quality
+    - [x] Add ZOD as decoder
 - [ ] UI and UX
-    - [ ] Add transitions
-    - [ ] Add routes with guards
-    - [ ] Add a loading state
-    - [ ] Add a error state
-    - [ ] Add stories
+    - [x] Add transitions
+        - [ ] Add routes with guards
+    - [x] Add a loading state
+    - [x] Add a error state
+        - [ ] Add stories
 - [ ] Accessibility
-    - [ ] Navigate with keys only
-    - [ ] Web browser back button works
-    - [ ] Check screen reader compatibility
+    - [x] Navigate with keys only
+        - [ ] Web browser back button works
+        - [ ] Check screen reader compatibility
 - [ ] Testing
     - [ ] Unit tests
     - [ ] E2e
 - [ ] Misc
     - [ ] Add a README.md
     - [ ] Add a UML diagram (https://www.jetbrains.com/help/idea/markdown.html#preview)
-
-### Completed Column ✓
-
-- [x] Completed task title  

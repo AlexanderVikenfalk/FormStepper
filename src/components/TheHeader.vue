@@ -12,7 +12,7 @@ import LanguageSwitcher from '@/components/LanguageSwitcher.vue'
           class="flex items-center justify-center w-1/5"
           to="/wizard"
         >
-          <Icon name="logo" />
+          <IconPresenter name="logo" />
         </router-link>
         <div class="flex items-center lg:order-2">
           <LanguageSwitcher />

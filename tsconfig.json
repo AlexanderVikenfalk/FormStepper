@@ -25,15 +25,10 @@
         "src/*"
       ]
     },
-    /* Linting */
     "strict": false,
-    // Set strict to false to configure options manually
     "strictNullChecks": true,
-    // Enable strict null checks
     "strictFunctionTypes": false,
-    // Disable strict function types
     "strictBindCallApply": true,
-    // Enable other strict checks if needed
     "strictPropertyInitialization": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
