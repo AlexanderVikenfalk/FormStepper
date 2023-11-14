@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import * as yup from 'yup' // This line was missing and is required for yup to be recognized
+import * as yup from 'yup'
 import { useForm } from 'vee-validate'
 import { useWebAPI } from '@/composables/useWebAPI.ts'
 import { useFormStore } from '@/stores/formStore'
@@ -25,9 +25,8 @@ const {
 
 const stepValidationSchemas = useValidationSchema()
 
-// Use the step index to access the current step's validation schema
 const currentSchema = computed(() => {
-  const stepName = stepSchema[currentStepIndex.value].name // "StepWelcome", "StepPersonalData", etc.
+  const stepName = stepSchema[currentStepIndex.value].name
   return stepValidationSchemas.value[stepName] || yup.object({}) // Fallback to an empty schema if not defined
 })
 
@@ -63,9 +62,9 @@ const onSubmit = handleSubmit(values => {
   formStore.updateFormData(values)
 
   if (!isLastStep.value) {
+    console.log(isSecondLastStep.value)
     nextStep(nextStepName.value)
-  } else if (isLastStep.value) {
-    // await new Promise(resolve => setTimeout(resolve, 2000))
+  } else if (isSecondLastStep.value) {
     formStore.resetFormData()
   }
 })

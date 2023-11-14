@@ -37,11 +37,11 @@
     }
 
     .layout-base-wrapper {
-        @apply flex justify-center items-center flex-1 flex-col sm:flex-row;
+        @apply h-[80vh]  flex justify-between  items-center flex-1 flex-col sm:flex-row sm:justify-center sm:h-full;
     }
 
     .layout-wizard {
-        @apply p-4 bg-transparent rounded-3xl shadow-wizard-md w-full sm:p-6 md:p-8 sm:w-3/4 lg:w-3/5;
+        @apply h-full p-4 bg-transparent rounded-3xl sm:shadow-wizard-md w-full sm:p-6 md:p-8 sm:w-3/4 lg:w-3/5;
     }
 
     .wizard-input {

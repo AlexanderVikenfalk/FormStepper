@@ -1,15 +1,13 @@
 <template>
-  <!-- Single <ol> rendered by transition-group with flex styling -->
   <transition-group
     tag="ol"
-    class="flex divide-x divide-neutral-200 w-full"
+    class="flex flex-col sm:flex-row divide-y sm:divide-y-0 sm:divide-x divide-neutral-200 w-full"
     enter-active-class="transition-opacity ease-out duration-300"
     leave-active-class="transition-opacity ease-in duration-300"
     enter-class="opacity-0"
     enter-to-class="opacity-100"
     leave-to-class="opacity-0"
   >
-    <!-- List items will fill equal space and center their content -->
     <li
       v-for="step in steps"
       :key="step.number"

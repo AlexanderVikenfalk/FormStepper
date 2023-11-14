@@ -1,4 +1,4 @@
-import {defineStore} from 'pinia' // Define the form data structure with a TypeScript interface
+import { defineStore } from "pinia"; // Define the form data structure with a TypeScript interface
 
 // Define the form data structure with a TypeScript interface
 interface FormData {
@@ -33,6 +33,7 @@ export const useFormStore = defineStore('form', {
       }
     },
     resetFormData() {
+      console.log('called')
       this.formData = initialState()
     },
   },

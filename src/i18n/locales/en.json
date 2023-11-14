@@ -22,7 +22,7 @@
     "steps": {
       "welcome": "Intro",
       "personal_data": "User info",
-      "terms": "User Agreement",
+      "terms": "Terms",
       "result": "Result"
     },
     "step_content": {
