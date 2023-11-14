@@ -62,7 +62,6 @@ const onSubmit = handleSubmit(values => {
   formStore.updateFormData(values)
 
   if (!isLastStep.value) {
-    console.log(isSecondLastStep.value)
     nextStep(nextStepName.value)
   } else if (isSecondLastStep.value) {
     formStore.resetFormData()

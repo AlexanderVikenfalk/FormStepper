@@ -35,6 +35,6 @@ export const GitHubUserSchema = z.object({
   updated_at: z.string(),
 })
 
-export function decodeGitHubUserResponse(response: any) {
+export function decodeGitHubUserResponse(response: unknown) {
   return GitHubUserSchema.parse(response)
 }
